@@ -23,11 +23,11 @@
                       "Entity": "fct_user_activity"
                     }
                   },
-                  "Property": "Avg Posts per User"
+                  "Property": "DJ Avg Posts per User"
                 }
               },
-              "queryRef": "fct_user_activity.Avg Posts per User",
-              "nativeQueryRef": "Avg Posts per User"
+              "queryRef": "fct_user_activity.DJ Avg Posts per User",
+              "nativeQueryRef": "DJ Avg Posts per User"
             }
           ]
         }

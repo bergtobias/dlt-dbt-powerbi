@@ -26,9 +26,7 @@
                   "Property": "department"
                 }
               },
-              "queryRef": "fct_user_activity.department",
-              "nativeQueryRef": "department",
-              "active": true
+              "queryRef": "fct_user_activity.department"
             }
           ]
         },
@@ -36,22 +34,18 @@
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
                       "Entity": "fct_user_activity"
                     }
                   },
-                  "Property": "Avg Spend per User"
+                  "Property": "total_spend"
                 }
               },
-              "queryRef": "fct_user_activity.Avg Spend per User",
-              "nativeQueryRef": "Avg Spend per User"
+              "queryRef": "fct_user_activity.total_spend"
             }
           ]
-        },
-        "Legend": {
-          "projections": []
         }
       }
     },

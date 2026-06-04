@@ -131,18 +131,18 @@ table fct_user_activity
 
 		annotation SummarizationSetBy = Automatic
 
-	measure 'Total Users' = COUNTROWS(fct_user_activity)
+	measure 'DJ Total Users' = COUNTROWS(fct_user_activity)
 		lineageTag: 8f9a0b1c-2d3e-4567-fabc-bbccddeeffe0
 
 	measure 'Avg Spend per User' = AVERAGE(fct_user_activity[total_spend])
 		lineageTag: 9a0b1c2d-3e4f-5678-abcd-ccddeeff0011
 		formatString: \#,0.00
 
-	measure 'Avg Completion Rate' = AVERAGE(fct_user_activity[completion_rate_pct])
+	measure 'DJ Avg Completion %' = AVERAGE(fct_user_activity[completion_rate_pct])
 		lineageTag: 0b1c2d3e-4f5a-6789-bcde-ddeeff001122
 		formatString: 0.0
 
-	measure 'Avg Posts per User' = AVERAGE(fct_user_activity[post_count])
+	measure 'DJ Avg Posts per User' = AVERAGE(fct_user_activity[post_count])
 		lineageTag: 1c2d3e4f-5a6b-7890-cdef-eeff00112233
 		formatString: 0.0
 

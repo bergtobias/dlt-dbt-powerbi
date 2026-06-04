@@ -23,11 +23,11 @@
                       "Entity": "fct_user_activity"
                     }
                   },
-                  "Property": "Avg Completion Rate"
+                  "Property": "DJ Avg Completion %"
                 }
               },
-              "queryRef": "fct_user_activity.Avg Completion Rate",
-              "nativeQueryRef": "Avg Completion Rate"
+              "queryRef": "fct_user_activity.DJ Avg Completion %",
+              "nativeQueryRef": "DJ Avg Completion %"
             }
           ]
         }

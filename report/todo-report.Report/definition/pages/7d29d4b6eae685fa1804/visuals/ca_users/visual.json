@@ -23,11 +23,11 @@
                       "Entity": "fct_user_activity"
                     }
                   },
-                  "Property": "Total Users"
+                  "Property": "DJ Total Users"
                 }
               },
-              "queryRef": "fct_user_activity.Total Users",
-              "nativeQueryRef": "Total Users"
+              "queryRef": "fct_user_activity.DJ Total Users",
+              "nativeQueryRef": "DJ Total Users"
             }
           ]
         }

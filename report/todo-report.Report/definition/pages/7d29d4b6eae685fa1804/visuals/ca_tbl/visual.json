@@ -17,7 +17,7 @@
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
                       "Entity": "fct_user_activity"
@@ -26,12 +26,11 @@
                   "Property": "full_name"
                 }
               },
-              "queryRef": "fct_user_activity.full_name",
-              "nativeQueryRef": "full_name"
+              "queryRef": "fct_user_activity.full_name"
             },
             {
               "field": {
-                "Measure": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
                       "Entity": "fct_user_activity"
@@ -40,12 +39,11 @@
                   "Property": "department"
                 }
               },
-              "queryRef": "fct_user_activity.department",
-              "nativeQueryRef": "department"
+              "queryRef": "fct_user_activity.department"
             },
             {
               "field": {
-                "Measure": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
                       "Entity": "fct_user_activity"
@@ -54,12 +52,11 @@
                   "Property": "gender"
                 }
               },
-              "queryRef": "fct_user_activity.gender",
-              "nativeQueryRef": "gender"
+              "queryRef": "fct_user_activity.gender"
             },
             {
               "field": {
-                "Measure": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
                       "Entity": "fct_user_activity"
@@ -68,12 +65,11 @@
                   "Property": "total_spend"
                 }
               },
-              "queryRef": "fct_user_activity.total_spend",
-              "nativeQueryRef": "total_spend"
+              "queryRef": "fct_user_activity.total_spend"
             },
             {
               "field": {
-                "Measure": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
                       "Entity": "fct_user_activity"
@@ -82,12 +78,11 @@
                   "Property": "post_count"
                 }
               },
-              "queryRef": "fct_user_activity.post_count",
-              "nativeQueryRef": "post_count"
+              "queryRef": "fct_user_activity.post_count"
             },
             {
               "field": {
-                "Measure": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
                       "Entity": "fct_user_activity"
@@ -96,12 +91,11 @@
                   "Property": "total_likes"
                 }
               },
-              "queryRef": "fct_user_activity.total_likes",
-              "nativeQueryRef": "total_likes"
+              "queryRef": "fct_user_activity.total_likes"
             },
             {
               "field": {
-                "Measure": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
                       "Entity": "fct_user_activity"
@@ -110,12 +104,11 @@
                   "Property": "completed_todos"
                 }
               },
-              "queryRef": "fct_user_activity.completed_todos",
-              "nativeQueryRef": "completed_todos"
+              "queryRef": "fct_user_activity.completed_todos"
             },
             {
               "field": {
-                "Measure": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
                       "Entity": "fct_user_activity"
@@ -124,12 +117,11 @@
                   "Property": "completion_rate_pct"
                 }
               },
-              "queryRef": "fct_user_activity.completion_rate_pct",
-              "nativeQueryRef": "completion_rate_pct"
+              "queryRef": "fct_user_activity.completion_rate_pct"
             },
             {
               "field": {
-                "Measure": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
                       "Entity": "fct_user_activity"
@@ -138,8 +130,7 @@
                   "Property": "items_bought"
                 }
               },
-              "queryRef": "fct_user_activity.items_bought",
-              "nativeQueryRef": "items_bought"
+              "queryRef": "fct_user_activity.items_bought"
             }
           ]
         }

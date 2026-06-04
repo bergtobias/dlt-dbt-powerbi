@@ -26,9 +26,7 @@
                   "Property": "country"
                 }
               },
-              "queryRef": "fct_user_activity.country",
-              "nativeQueryRef": "country",
-              "active": true
+              "queryRef": "fct_user_activity.country"
             }
           ]
         },
@@ -36,17 +34,16 @@
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
                       "Entity": "fct_user_activity"
                     }
                   },
-                  "Property": "Avg Completion Rate"
+                  "Property": "completion_rate_pct"
                 }
               },
-              "queryRef": "fct_user_activity.Avg Completion Rate",
-              "nativeQueryRef": "Avg Completion Rate"
+              "queryRef": "fct_user_activity.completion_rate_pct"
             }
           ]
         }
