@@ -1,5 +1,9 @@
 # Data Pipeline
 
+> **For local development and demo purposes only.**
+> All data sources are public APIs. Credentials are intentionally simple defaults (`sa` / `Pipeline123!`).
+> Do not use this setup with real data or expose it beyond your local machine.
+
 End-to-end data pipeline: DLT ingestion → dbt transformations → Power BI PBIR report.
 
 ```
