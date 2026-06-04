@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "ca_country",
   "position": {
     "x": 620,
@@ -26,7 +26,9 @@
                   "Property": "country"
                 }
               },
-              "queryRef": "fct_user_activity.country"
+              "queryRef": "fct_user_activity.country",
+              "nativeQueryRef": "Antal på country",
+              "active": true
             }
           ]
         },
@@ -34,22 +36,50 @@
           "projections": [
             {
               "field": {
-                "Column": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "fct_user_activity"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_user_activity"
+                        }
+                      },
+                      "Property": "discounted_spend"
                     }
                   },
-                  "Property": "completion_rate_pct"
+                  "Function": 0
                 }
               },
-              "queryRef": "fct_user_activity.completion_rate_pct"
+              "queryRef": "Sum(fct_user_activity.discounted_spend)",
+              "nativeQueryRef": "Summa discounted_spend"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fct_user_activity"
+                      }
+                    },
+                    "Property": "discounted_spend"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "border": [
         {
@@ -58,13 +88,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#C4B5FD'"
                 }
               }
             },
@@ -88,13 +111,6 @@
                 }
               }
             },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#FAFAFA'"
-                }
-              }
-            },
             "transparency": {
               "expr": {
                 "Literal": {
@@ -104,7 +120,58 @@
             }
           }
         }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Completion Rate per Land'"
+                }
+              }
+            }
+          }
+        }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "421575626aa271c93e34",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_user_activity"
+              }
+            },
+            "Property": "country"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "fe1abf03487cb60094a0",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_user_activity"
+                  }
+                },
+                "Property": "discounted_spend"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

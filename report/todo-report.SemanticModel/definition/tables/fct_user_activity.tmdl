@@ -1,6 +1,21 @@
 table fct_user_activity
 	lineageTag: 1a2b3c4d-5e6f-7890-abcd-aabbccddeeff
 
+	measure 'DJ Total Users' = COUNTROWS(fct_user_activity)
+		lineageTag: 8f9a0b1c-2d3e-4567-fabc-bbccddeeffe0
+
+	measure 'Avg Spend per User' = AVERAGE(fct_user_activity[total_spend])
+		formatString: \#,0.00
+		lineageTag: 9a0b1c2d-3e4f-5678-abcd-ccddeeff0011
+
+	measure 'DJ Avg Completion %' = AVERAGE(fct_user_activity[completion_rate_pct])
+		formatString: 0.0
+		lineageTag: 0b1c2d3e-4f5a-6789-bcde-ddeeff001122
+
+	measure 'DJ Avg Posts per User' = AVERAGE(fct_user_activity[post_count])
+		formatString: 0.0
+		lineageTag: 1c2d3e4f-5a6b-7890-cdef-eeff00112233
+
 	column user_id
 		dataType: int64
 		lineageTag: 2b3c4d5e-6f7a-8901-bcde-bbccddeeff00
@@ -107,19 +122,19 @@ table fct_user_activity
 
 	column completion_rate_pct
 		dataType: double
+		formatString: 0.0
 		lineageTag: 5c6d7e8f-9a0b-1234-cdef-8899aabbccdd
 		summarizeBy: average
 		sourceColumn: completion_rate_pct
-		formatString: 0.0
 
 		annotation SummarizationSetBy = Automatic
 
 	column total_spend
 		dataType: double
+		formatString: \#,0.00
 		lineageTag: 6d7e8f9a-0b1c-2345-defa-99aabbccddee
 		summarizeBy: sum
 		sourceColumn: total_spend
-		formatString: \#,0.00
 
 		annotation SummarizationSetBy = Automatic
 
@@ -131,20 +146,24 @@ table fct_user_activity
 
 		annotation SummarizationSetBy = Automatic
 
-	measure 'DJ Total Users' = COUNTROWS(fct_user_activity)
-		lineageTag: 8f9a0b1c-2d3e-4567-fabc-bbccddeeffe0
+	column cart_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 18eab11d-e168-47b6-823b-29cc725ae470
+		summarizeBy: sum
+		sourceColumn: cart_count
 
-	measure 'Avg Spend per User' = AVERAGE(fct_user_activity[total_spend])
-		lineageTag: 9a0b1c2d-3e4f-5678-abcd-ccddeeff0011
-		formatString: \#,0.00
+		annotation SummarizationSetBy = Automatic
 
-	measure 'DJ Avg Completion %' = AVERAGE(fct_user_activity[completion_rate_pct])
-		lineageTag: 0b1c2d3e-4f5a-6789-bcde-ddeeff001122
-		formatString: 0.0
+	column discounted_spend
+		dataType: double
+		lineageTag: b596491a-16ff-43e3-9c54-83c8c6cad4e0
+		summarizeBy: sum
+		sourceColumn: discounted_spend
 
-	measure 'DJ Avg Posts per User' = AVERAGE(fct_user_activity[post_count])
-		lineageTag: 1c2d3e4f-5a6b-7890-cdef-eeff00112233
-		formatString: 0.0
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	partition fct_user_activity = m
 		mode: import
@@ -156,3 +175,4 @@ table fct_user_activity
 				  tbl
 
 	annotation PBI_ResultType = Table
+

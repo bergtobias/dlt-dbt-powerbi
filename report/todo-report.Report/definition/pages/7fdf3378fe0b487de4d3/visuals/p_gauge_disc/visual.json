@@ -35,7 +35,7 @@
                 }
               },
               "queryRef": "Avg(fct_products.discount_percentage)",
-              "nativeQueryRef": "Medelv\u00e4rde p\u00e5 discount_percentage"
+              "nativeQueryRef": "Medelvärde på discount_percentage"
             }
           ]
         }
@@ -75,13 +75,6 @@
                 }
               }
             },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#C4B5FD'"
-                }
-              }
-            },
             "radius": {
               "expr": {
                 "Literal": {
@@ -99,13 +92,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#FAFAFA'"
                 }
               }
             },

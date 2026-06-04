@@ -13,6 +13,23 @@
     "visualType": "scatterChart",
     "query": {
       "queryState": {
+        "Details": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_products"
+                    }
+                  },
+                  "Property": "title"
+                }
+              },
+              "queryRef": "fct_products.title"
+            }
+          ]
+        },
         "X": {
           "projections": [
             {
@@ -26,7 +43,8 @@
                   "Property": "price"
                 }
               },
-              "queryRef": "fct_products.price"
+              "queryRef": "fct_products.price",
+              "active": true
             }
           ]
         },
@@ -46,23 +64,6 @@
               "queryRef": "fct_products.rating"
             }
           ]
-        },
-        "Details": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fct_products"
-                    }
-                  },
-                  "Property": "title"
-                }
-              },
-              "queryRef": "fct_products.title"
-            }
-          ]
         }
       }
     },
@@ -74,13 +75,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#C4B5FD'"
                 }
               }
             },
@@ -101,13 +95,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#FAFAFA'"
                 }
               }
             },

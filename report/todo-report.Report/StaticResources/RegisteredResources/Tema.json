@@ -43,34 +43,87 @@
       "*": {
         "visualHeader": [
           {
-            "foreground": { "solid": { "color": "#8250C4" } },
+            "foreground": {
+              "solid": {
+                "color": "#8250C4"
+              }
+            },
             "transparency": 3
           }
         ],
-        "background": [{ "show": true, "transparency": 3 }],
+        "background": [
+          {
+            "show": true,
+            "transparency": 3
+          }
+        ],
         "outspacePane": [
           {
-            "foregroundColor": { "solid": { "color": "#FFFFFF" } },
-            "backgroundColor": { "solid": { "color": "#9357c3" } },
+            "foregroundColor": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "backgroundColor": {
+              "solid": {
+                "color": "#9357c3"
+              }
+            },
             "transparency": 0
           }
         ],
         "filterCard": [
           {
             "$id": "Available",
-            "foregroundColor": { "solid": { "color": "#FFFFFF" } },
-            "inputBoxColor": { "solid": { "color": "#8250C4" } },
+            "foregroundColor": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "inputBoxColor": {
+              "solid": {
+                "color": "#8250C4"
+              }
+            },
             "transparency": 100
           }
         ]
       }
     },
-    "group": { "*": { "background": [{ "show": false }] } },
-    "basicShape": { "*": { "background": [{ "show": false }] } },
-    "image": { "*": { "background": [{ "show": false }] } },
+    "group": {
+      "*": {
+        "background": [
+          {
+            "show": false
+          }
+        ]
+      }
+    },
+    "basicShape": {
+      "*": {
+        "background": [
+          {
+            "show": false
+          }
+        ]
+      }
+    },
+    "image": {
+      "*": {
+        "background": [
+          {
+            "show": false
+          }
+        ]
+      }
+    },
     "page": {
       "*": {
-        "background": [{ "transparency": 100 }],
+        "background": [
+          {
+            "transparency": 100
+          }
+        ],
         "outspace": [
           {
             "image": {

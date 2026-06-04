@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "p_tbl",
   "position": {
-    "x": 20.0,
-    "y": 680.0,
+    "x": 20,
+    "y": 680,
     "z": 8,
-    "height": 200.0,
-    "width": 1240.0,
+    "height": 200,
+    "width": 1240,
     "tabOrder": 8
   },
   "visual": {
@@ -162,13 +162,6 @@
                 }
               }
             },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#C4B5FD'"
-                }
-              }
-            },
             "radius": {
               "expr": {
                 "Literal": {
@@ -186,13 +179,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#FAFAFA'"
                 }
               }
             },

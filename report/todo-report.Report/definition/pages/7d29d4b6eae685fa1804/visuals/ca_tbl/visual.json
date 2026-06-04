@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "ca_tbl",
   "position": {
-    "x": 20,
-    "y": 680,
+    "x": 19.029850746268657,
+    "y": 689.5522388059702,
     "z": 8,
-    "height": 200,
-    "width": 1240,
+    "height": 200.37313432835822,
+    "width": 1240.2985074626865,
     "tabOrder": 8
   },
   "visual": {
@@ -134,9 +134,25 @@
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_user_activity"
+                  }
+                },
+                "Property": "total_likes"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
       }
     },
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "border": [
         {
@@ -145,13 +161,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#C4B5FD'"
                 }
               }
             },
@@ -175,13 +184,6 @@
                 }
               }
             },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#FAFAFA'"
-                }
-              }
-            },
             "transparency": {
               "expr": {
                 "Literal": {
@@ -191,7 +193,151 @@
             }
           }
         }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Detaljerad Användaraktivitet'"
+                }
+              }
+            }
+          }
+        }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "11bf223e0852b04143ad",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_user_activity"
+              }
+            },
+            "Property": "full_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "34818347061b7c20215a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_user_activity"
+              }
+            },
+            "Property": "department"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "7d26fad230a3d624b107",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_user_activity"
+              }
+            },
+            "Property": "gender"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "4a51d510610864d7ac63",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_user_activity"
+              }
+            },
+            "Property": "total_spend"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "fca98f0ea9dc604504b1",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_user_activity"
+              }
+            },
+            "Property": "post_count"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "96f57818a3ec5780dcca",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_user_activity"
+              }
+            },
+            "Property": "total_likes"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d6144e50cbd5e9ae7250",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_user_activity"
+              }
+            },
+            "Property": "completed_todos"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "0b6143a88b10aae8b457",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_user_activity"
+              }
+            },
+            "Property": "completion_rate_pct"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "cf2ff908045277e26ca0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_user_activity"
+              }
+            },
+            "Property": "items_bought"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

@@ -44,13 +44,6 @@
                 }
               }
             },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#C4B5FD'"
-                }
-              }
-            },
             "radius": {
               "expr": {
                 "Literal": {
@@ -68,13 +61,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#EDE9FE'"
                 }
               }
             },

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "ca_gender",
   "position": {
     "x": 20,
@@ -26,7 +26,9 @@
                   "Property": "gender"
                 }
               },
-              "queryRef": "fct_user_activity.gender"
+              "queryRef": "fct_user_activity.gender",
+              "nativeQueryRef": "gender",
+              "active": true
             }
           ]
         },
@@ -34,35 +36,69 @@
           "projections": [
             {
               "field": {
-                "Column": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "fct_user_activity"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_user_activity"
+                        }
+                      },
+                      "Property": "post_count"
                     }
                   },
-                  "Property": "post_count"
+                  "Function": 0
                 }
               },
-              "queryRef": "fct_user_activity.post_count"
+              "queryRef": "Sum(fct_user_activity.post_count)",
+              "nativeQueryRef": "Summa post_count"
             },
             {
               "field": {
-                "Column": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "fct_user_activity"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_user_activity"
+                        }
+                      },
+                      "Property": "todo_count"
                     }
                   },
-                  "Property": "total_likes"
+                  "Function": 0
                 }
               },
-              "queryRef": "fct_user_activity.total_likes"
+              "queryRef": "Sum(fct_user_activity.todo_count)",
+              "nativeQueryRef": "Summa todo_count"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fct_user_activity"
+                      }
+                    },
+                    "Property": "post_count"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "border": [
         {
@@ -71,13 +107,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#C4B5FD'"
                 }
               }
             },
@@ -101,13 +130,6 @@
                 }
               }
             },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#FAFAFA'"
-                }
-              }
-            },
             "transparency": {
               "expr": {
                 "Literal": {
@@ -117,7 +139,77 @@
             }
           }
         }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Inlägg & Likes per Kön'"
+                }
+              }
+            }
+          }
+        }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "83b258e5c0e270c3d472",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_user_activity"
+              }
+            },
+            "Property": "gender"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "3bdefdb0b4909c701253",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_user_activity"
+                  }
+                },
+                "Property": "post_count"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "77a37ee23362597403a5",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_user_activity"
+                  }
+                },
+                "Property": "todo_count"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

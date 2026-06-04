@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "ca_scatter",
   "position": {
     "x": 20,
@@ -13,40 +13,6 @@
     "visualType": "scatterChart",
     "query": {
       "queryState": {
-        "X": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fct_user_activity"
-                    }
-                  },
-                  "Property": "total_spend"
-                }
-              },
-              "queryRef": "fct_user_activity.total_spend"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fct_user_activity"
-                    }
-                  },
-                  "Property": "completion_rate_pct"
-                }
-              },
-              "queryRef": "fct_user_activity.completion_rate_pct"
-            }
-          ]
-        },
         "Details": {
           "projections": [
             {
@@ -80,10 +46,44 @@
               "queryRef": "fct_user_activity.post_count"
             }
           ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_user_activity"
+                    }
+                  },
+                  "Property": "total_spend"
+                }
+              },
+              "queryRef": "fct_user_activity.total_spend",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_user_activity"
+                    }
+                  },
+                  "Property": "completion_rate_pct"
+                }
+              },
+              "queryRef": "fct_user_activity.completion_rate_pct"
+            }
+          ]
         }
       }
     },
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "border": [
         {
@@ -92,13 +92,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#C4B5FD'"
                 }
               }
             },
@@ -122,13 +115,6 @@
                 }
               }
             },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#FAFAFA'"
-                }
-              }
-            },
             "transparency": {
               "expr": {
                 "Literal": {
@@ -138,7 +124,82 @@
             }
           }
         }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Köp vs Completion (storlek = inlägg)'"
+                }
+              }
+            }
+          }
+        }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "9c4fb0b20939072526b8",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_user_activity"
+              }
+            },
+            "Property": "total_spend"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e4dfad379d412bb26c32",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_user_activity"
+              }
+            },
+            "Property": "completion_rate_pct"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "18933ecf0029450beb0a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_user_activity"
+              }
+            },
+            "Property": "full_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "71fa741039b5e087456a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_user_activity"
+              }
+            },
+            "Property": "post_count"
+          }
+        },
+        "type": "Advanced"
+      }
+    ],
+    "filterSortOrder": "Ascending"
   }
 }
