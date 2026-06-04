@@ -22,13 +22,12 @@ DummyJSON API          ├─► extract/ ──► SQL Server ──► transfo
 
 ## Prerequisites
 
-| Tool | Version | Notes |
-|------|---------|-------|
-| [Python](https://www.python.org/downloads/) | 3.12+ | |
-| [uv](https://docs.astral.sh/uv/getting-started/installation/) | latest | replaces pip/venv |
-| [Docker Desktop](https://www.docker.com/products/docker-desktop/) | latest | runs SQL Server |
+| Tool | Version | Install |
+|------|---------|---------|
+| [uv](https://docs.astral.sh/uv/getting-started/installation/) | latest | `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 \| iex"` |
+| [ODBC Driver 18 for SQL Server](https://learn.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server) | 18 | `winget install Microsoft.msodbcsql.18` |
+| SQL Server | 2022 | Running locally on port 1433 (Docker or native) |
 | [Power BI Desktop](https://powerbi.microsoft.com/desktop/) | May 2026+ | PBIR format required |
-| [ODBC Driver 18](https://learn.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server) | 18 | SQL Server connection |
 
 ---
 
@@ -47,26 +46,23 @@ cd data-pipeline
 Copy-Item .env.example .env
 ```
 
-Edit `.env` — defaults match the included `docker-compose.yml`:
+Edit `.env` with your SQL Server credentials:
 
 ```env
-MSSQL_HOST=localhost
+MSSQL_HOST=127.0.0.1
 MSSQL_PORT=1433
 MSSQL_USER=sa
 MSSQL_SA_PASSWORD=Pipeline123!
 MSSQL_DB=analytics
 ```
 
-### 3. Start SQL Server
+> **Windows note:** Use `127.0.0.1`, not `localhost`. Windows may resolve `localhost` to IPv6 (`::1`), causing connection timeouts even when SQL Server is running.
+
+### 3. Start SQL Server (if using Docker)
 
 ```powershell
 docker compose up -d
-```
-
-Wait ~15 seconds, then verify:
-
-```powershell
-docker compose ps   # STATUS should be "healthy"
+docker compose ps   # wait until STATUS is "healthy" (~15 s)
 ```
 
 ### 4. Install dependencies
@@ -81,8 +77,12 @@ uv sync
 # Load raw data
 uv run python -m extract.run
 
+# Load .env into the shell (dbt needs env vars, it doesn't read .env automatically)
+Get-Content .env | Where-Object { $_ -match "^[^#].*=.*" } | ForEach-Object {
+    $k, $v = $_ -split "=", 2; Set-Item "Env:$k" $v
+}
+
 # Transform to marts
-$env:$(Get-Content .env | ForEach-Object { $_ }) 2>$null
 uv run dbt run --project-dir transform --profiles-dir .
 ```
 
@@ -149,7 +149,7 @@ make pipeline   # load + transform in sequence
 make down       # Stop SQL Server
 ```
 
-Manual equivalents:
+Manual equivalents (dbt requires env vars loaded first — see step 5):
 
 ```powershell
 uv run python -m extract.run
