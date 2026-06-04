@@ -1,13 +1,18 @@
 [project]
 name = "data-pipeline"
 version = "0.1.0"
-description = "Add your description here"
+description = "End-to-end data pipeline: DLT ingestion → dbt transformations → Power BI PBIR report"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "dlt[mssql]",
-    "dbt-sqlserver",
-    "requests",
-    "python-dotenv",
-    "sqlalchemy>=2.0.50",
+    "dlt[mssql]>=1.0.0",
+    "dbt-sqlserver>=1.9.0",
+    "requests>=2.32.0",
+    "python-dotenv>=1.0.0",
+    "sqlalchemy>=2.0.0",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "check-jsonschema>=0.37.0",
 ]

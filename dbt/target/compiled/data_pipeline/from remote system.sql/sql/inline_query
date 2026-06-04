@@ -1,1 +1,0 @@
-select full_name, department, total_spend, post_count, total_likes, completion_rate_pct from marts.fct_user_activity limit 5
