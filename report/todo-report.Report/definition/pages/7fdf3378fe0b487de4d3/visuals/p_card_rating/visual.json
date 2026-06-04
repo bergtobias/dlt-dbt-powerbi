@@ -23,11 +23,10 @@
                       "Entity": "fct_products"
                     }
                   },
-                  "Property": "Avg Rating"
+                  "Property": "Avg Product Rating"
                 }
               },
-              "queryRef": "fct_products.Avg Rating",
-              "nativeQueryRef": "Avg Rating"
+              "queryRef": "fct_products.Avg Product Rating"
             }
           ]
         }

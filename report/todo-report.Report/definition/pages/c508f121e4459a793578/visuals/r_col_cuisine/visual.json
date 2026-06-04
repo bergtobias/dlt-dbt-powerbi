@@ -42,11 +42,10 @@
                       "Entity": "fct_recipes"
                     }
                   },
-                  "Property": "Avg Rating"
+                  "Property": "Avg Recipe Rating"
                 }
               },
-              "queryRef": "fct_recipes.Avg Rating",
-              "nativeQueryRef": "Avg Rating"
+              "queryRef": "fct_recipes.Avg Recipe Rating"
             }
           ]
         },

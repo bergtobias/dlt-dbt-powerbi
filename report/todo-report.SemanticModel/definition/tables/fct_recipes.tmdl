@@ -83,7 +83,7 @@ table fct_recipes
 	measure 'Total Recipes' = COUNTROWS(fct_recipes)
 		lineageTag: 88ff00ff-9900-aa11-bb22-cc0900112233
 
-	measure 'Avg Rating' = AVERAGE(fct_recipes[rating])
+	measure 'Avg Recipe Rating' = AVERAGE(fct_recipes[rating])
 		lineageTag: 9900ff00-aa11-bb22-cc33-dd1001223344
 		formatString: 0.00
 
