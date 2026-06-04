@@ -1,0 +1,98 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "chart_company_rate",
+  "position": {
+    "x": 620,
+    "y": 120,
+    "z": 5,
+    "height": 300,
+    "width": 640,
+    "tabOrder": 5
+  },
+  "visual": {
+    "visualType": "donutChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_user_engagement"
+                    }
+                  },
+                  "Property": "company_name"
+                }
+              },
+              "queryRef": "fct_user_engagement.company_name",
+              "nativeQueryRef": "company_name",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_user_engagement"
+                    }
+                  },
+                  "Property": "Avg Completion Rate"
+                }
+              },
+              "queryRef": "fct_user_engagement.Avg Completion Rate",
+              "nativeQueryRef": "Avg Completion Rate"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Avg Completion Rate by Company'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

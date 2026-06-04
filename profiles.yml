@@ -1,0 +1,16 @@
+data_pipeline:
+  target: dev
+  outputs:
+    dev:
+      type: sqlserver
+      driver: ODBC Driver 18 for SQL Server
+      server: "{{ env_var('MSSQL_HOST') }}"
+      port: "{{ env_var('MSSQL_PORT') | int }}"
+      database: "{{ env_var('MSSQL_DB') }}"
+      schema: dbo
+      username: "{{ env_var('MSSQL_USER') }}"
+      password: "{{ env_var('MSSQL_SA_PASSWORD') }}"
+      authentication: sql
+      encrypt: yes
+      trust_cert: yes
+      threads: 4

@@ -1,0 +1,88 @@
+{
+  "name": "DataPipeline",
+  "dataColors": [
+    "#0F62FE",
+    "#42BE65",
+    "#FF832B",
+    "#BE95FF",
+    "#08BDBA",
+    "#F1C21B",
+    "#DA1E28",
+    "#6F6F6F"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#161616",
+  "tableAccent": "#0F62FE",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "fontFamily": [
+          {
+            "value": "Segoe UI"
+          }
+        ]
+      }
+    },
+    "card": {
+      "*": {
+        "dataLabels": [
+          {
+            "fontSize": 26,
+            "fontBold": true,
+            "color": {
+              "solid": {
+                "color": "#161616"
+              }
+            }
+          }
+        ],
+        "categoryLabels": [
+          {
+            "fontSize": 11,
+            "color": {
+              "solid": {
+                "color": "#6F6F6F"
+              }
+            }
+          }
+        ],
+        "background": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#F4F4F4"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": false
+          }
+        ]
+      }
+    },
+    "tableEx": {
+      "*": {
+        "columnHeaders": [
+          {
+            "fontBold": true,
+            "backgroundColor": {
+              "solid": {
+                "color": "#E0E0E0"
+              }
+            }
+          }
+        ],
+        "grid": [
+          {
+            "gridVertical": false,
+            "rowPadding": 4
+          }
+        ]
+      }
+    }
+  }
+}

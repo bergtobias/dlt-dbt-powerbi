@@ -1,0 +1,16 @@
+model Model
+	culture: sv-SE
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: sv-SE
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["fct_user_engagement"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+ref table fct_user_engagement
+

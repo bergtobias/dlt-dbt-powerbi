@@ -1,0 +1,267 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "tbl_detail",
+  "position": {
+    "x": 20,
+    "y": 660,
+    "z": 8,
+    "height": 220,
+    "width": 1240,
+    "tabOrder": 8
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_user_engagement"
+                    }
+                  },
+                  "Property": "city"
+                }
+              },
+              "queryRef": "fct_user_engagement.city1",
+              "nativeQueryRef": "city1"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_user_engagement"
+                    }
+                  },
+                  "Property": "company_name"
+                }
+              },
+              "queryRef": "fct_user_engagement.company_name1",
+              "nativeQueryRef": "company_name1"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_user_engagement"
+                        }
+                      },
+                      "Property": "completed_todos"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_user_engagement.completed_todos)",
+              "nativeQueryRef": "Summa completed_todos"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_user_engagement"
+                        }
+                      },
+                      "Property": "completion_rate"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Avg(fct_user_engagement.completion_rate)",
+              "nativeQueryRef": "Medelvärde på completion_rate"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_user_engagement"
+                        }
+                      },
+                      "Property": "todo_count"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_user_engagement.todo_count)",
+              "nativeQueryRef": "Summa todo_count"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_user_engagement"
+                    }
+                  },
+                  "Property": "username"
+                }
+              },
+              "queryRef": "fct_user_engagement.username1",
+              "nativeQueryRef": "username1"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'User Todo Detail'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "a4c5dbf8e5250a387431",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_user_engagement"
+              }
+            },
+            "Property": "city"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "15dce7e1873c6010aac5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_user_engagement"
+              }
+            },
+            "Property": "company_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "f4f99c6d6c85c252979d",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_user_engagement"
+                  }
+                },
+                "Property": "completed_todos"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "72b4e5149d642633e273",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_user_engagement"
+                  }
+                },
+                "Property": "completion_rate"
+              }
+            },
+            "Function": 1
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "eab8595a7d20c42c6e15",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_user_engagement"
+                  }
+                },
+                "Property": "todo_count"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "327dea7123ec20a8ce0b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_user_engagement"
+              }
+            },
+            "Property": "username"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

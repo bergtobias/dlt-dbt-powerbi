@@ -1,0 +1,33 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: data_pipeline_db
+    restart: unless-stopped
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD:-Pipeline123!}
+      MSSQL_PID: Developer
+    ports:
+      - "${MSSQL_PORT:-1433}:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P \"${MSSQL_SA_PASSWORD:-Pipeline123!}\" -Q \"SELECT 1\" -No"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: data_pipeline_pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@local.dev}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    ports:
+      - "5050:80"
+
+volumes:
+  sqlserver_data:

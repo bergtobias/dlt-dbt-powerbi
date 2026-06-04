@@ -1,0 +1,204 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "chart_user_todos",
+  "position": {
+    "x": 20,
+    "y": 120,
+    "z": 4,
+    "height": 300,
+    "width": 580,
+    "tabOrder": 4
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_user_engagement"
+                    }
+                  },
+                  "Property": "username"
+                }
+              },
+              "queryRef": "fct_user_engagement.username",
+              "nativeQueryRef": "username",
+              "active": true
+            }
+          ]
+        },
+        "Legend": {
+          "projections": []
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_user_engagement"
+                        }
+                      },
+                      "Property": "todo_count"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_user_engagement.todo_count)",
+              "nativeQueryRef": "Summa todo_count"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_user_engagement"
+                        }
+                      },
+                      "Property": "completed_todos"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_user_engagement.completed_todos)",
+              "nativeQueryRef": "Summa completed_todos"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fct_user_engagement"
+                      }
+                    },
+                    "Property": "todo_count"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Completed vs Total Todos by User'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "f3a9b04d74e903a4cc40",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_user_engagement"
+              }
+            },
+            "Property": "username"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "fb8f7020302381aac9a9",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_user_engagement"
+                  }
+                },
+                "Property": "todo_count"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "b3a8d9ec4cae70e80c04",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_user_engagement"
+                  }
+                },
+                "Property": "completed_todos"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
