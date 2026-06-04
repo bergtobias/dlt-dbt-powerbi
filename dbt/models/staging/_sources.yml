@@ -8,3 +8,4 @@ sources:
       - name: posts
       - name: comments
       - name: todos
+      - name: products

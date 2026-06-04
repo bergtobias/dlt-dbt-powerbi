@@ -1,0 +1,192 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "p_tbl",
+  "position": {
+    "x": 20,
+    "y": 680,
+    "z": 8,
+    "height": 200,
+    "width": 1240,
+    "tabOrder": 8
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_products"
+                    }
+                  },
+                  "Property": "title"
+                }
+              },
+              "queryRef": "fct_products.title",
+              "nativeQueryRef": "title"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_products"
+                    }
+                  },
+                  "Property": "category"
+                }
+              },
+              "queryRef": "fct_products.category",
+              "nativeQueryRef": "category"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_products"
+                    }
+                  },
+                  "Property": "brand"
+                }
+              },
+              "queryRef": "fct_products.brand",
+              "nativeQueryRef": "brand"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_products"
+                    }
+                  },
+                  "Property": "price"
+                }
+              },
+              "queryRef": "fct_products.price",
+              "nativeQueryRef": "price"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_products"
+                    }
+                  },
+                  "Property": "discounted_price"
+                }
+              },
+              "queryRef": "fct_products.discounted_price",
+              "nativeQueryRef": "discounted_price"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_products"
+                    }
+                  },
+                  "Property": "rating"
+                }
+              },
+              "queryRef": "fct_products.rating",
+              "nativeQueryRef": "rating"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_products"
+                    }
+                  },
+                  "Property": "stock"
+                }
+              },
+              "queryRef": "fct_products.stock",
+              "nativeQueryRef": "stock"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_products"
+                    }
+                  },
+                  "Property": "availability_status"
+                }
+              },
+              "queryRef": "fct_products.availability_status",
+              "nativeQueryRef": "availability_status"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "expr": {
+                "Literal": {
+                  "Value": "'#C4B5FD'"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "expr": {
+                "Literal": {
+                  "Value": "'#FAFAFA'"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

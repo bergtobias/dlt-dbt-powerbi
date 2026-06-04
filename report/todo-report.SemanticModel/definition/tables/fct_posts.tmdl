@@ -1,0 +1,71 @@
+table fct_posts
+	lineageTag: e0d9e2b1-d426-4122-8fd3-a099fe72f46c
+
+	column post_id
+		dataType: int64
+		lineageTag: 383a5c4b-5092-4798-8b06-eb1726bec099
+		summarizeBy: none
+		sourceColumn: post_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_id
+		dataType: int64
+		lineageTag: a63a0db3-0c48-4cf0-babc-86a031e8e6fa
+		summarizeBy: none
+		sourceColumn: user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column title
+		dataType: string
+		lineageTag: 5b835ee5-7517-4351-9b0d-4a3fabc9dd2a
+		summarizeBy: none
+		sourceColumn: title
+
+		annotation SummarizationSetBy = Automatic
+
+	column author_name
+		dataType: string
+		lineageTag: 262eb439-717d-4c9c-a243-a830ae290042
+		summarizeBy: none
+		sourceColumn: author_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column comment_count
+		dataType: int64
+		lineageTag: 805b4c8b-8d90-44d0-aa50-af65e161a72c
+		summarizeBy: sum
+		sourceColumn: comment_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_commented
+		dataType: int64
+		lineageTag: aa8d926f-5d25-42ad-b0e4-73d2efc7a139
+		summarizeBy: sum
+		sourceColumn: is_commented
+
+		annotation SummarizationSetBy = Automatic
+
+	measure 'Total Posts' = COUNTROWS(fct_posts)
+		lineageTag: baab9585-ec86-46a9-9652-cc77bec7c785
+
+	measure 'Avg Comments per Post' = AVERAGE(fct_posts[comment_count])
+		lineageTag: 6359871f-f019-4d16-8901-e7342ea88996
+		formatString: 0.0
+
+	measure 'Posts with Comments' = CALCULATE(COUNTROWS(fct_posts), fct_posts[is_commented] = 1)
+		lineageTag: c1d2e3f4-a5b6-7890-cdef-123456789012
+
+	partition fct_posts = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database("wsl.localhost", "analytics"),
+				  tbl    = Source{[Schema="marts",Item="fct_posts"]}[Data]
+				in
+				  tbl
+
+	annotation PBI_ResultType = Table

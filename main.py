@@ -1,7 +1,8 @@
 import os
 import dlt
 from dotenv import load_dotenv
-from pipeline.jsonplaceholder import source
+from pipeline.jsonplaceholder import source as jsonplaceholder_source
+from pipeline.dummyjson import source as dummyjson_source
 
 load_dotenv()
 
@@ -19,13 +20,21 @@ def build_credentials() -> str:
 
 
 def main():
-    pipeline = dlt.pipeline(
+    creds = build_credentials()
+
+    jp = dlt.pipeline(
         pipeline_name="jsonplaceholder",
-        destination=dlt.destinations.mssql(credentials=build_credentials()),
+        destination=dlt.destinations.mssql(credentials=creds),
         dataset_name="raw",
     )
-    info = pipeline.run(source())
-    print(info)
+    print(jp.run(jsonplaceholder_source()))
+
+    dj = dlt.pipeline(
+        pipeline_name="dummyjson",
+        destination=dlt.destinations.mssql(credentials=creds),
+        dataset_name="raw",
+    )
+    print(dj.run(dummyjson_source()))
 
 
 if __name__ == "__main__":
