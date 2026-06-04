@@ -4,12 +4,5 @@
   "displayName": "Todos",
   "displayOption": "FitToPage",
   "height": 900,
-  "width": 1280,
-  "objects": {
-    "background": [
-      {
-        "properties": {}
-      }
-    ]
-  }
+  "width": 1280
 }
