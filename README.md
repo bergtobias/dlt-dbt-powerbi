@@ -1,12 +1,11 @@
 # Data Pipeline
 
-End-to-end data pipeline with DLT ingestion, dbt transformations and a Power BI PBIR report.
+End-to-end data pipeline: DLT ingestion → dbt transformations → Power BI PBIR report.
 
 ```
 JSONPlaceholder API  ──┐
-DummyJSON API          ├─► DLT ──► SQL Server ──► dbt ──► marts ──► Power BI
-                       │
-                    (raw schema)              (marts schema)
+DummyJSON API          ├─► extract/ ──► SQL Server ──► transform/ ──► reports/
+                       │     (DLT)       raw/dummyjson     (dbt)      marts/
 ```
 
 **Data sources**
@@ -14,10 +13,10 @@ DummyJSON API          ├─► DLT ──► SQL Server ──► dbt ──�
 - [DummyJSON](https://dummyjson.com) — products, users, carts, posts, todos, recipes
 
 **Report pages**
-- **Todos** — user engagement, todo completion rate
-- **Products** — product ratings, pricing, brand/category breakdown
-- **Cross Analysis** — spend vs completion, posts/likes per gender, dept breakdown
-- **Recept** — recipe cuisine, difficulty, time vs calories scatter
+- **Todos** — user engagement and todo completion rate
+- **Products** — product ratings, pricing, brand and category breakdown
+- **Cross Analysis** — spend vs completion, posts/likes per gender, department breakdown
+- **Recept** — recipe cuisine, difficulty, time vs calories
 
 ---
 
@@ -29,13 +28,13 @@ DummyJSON API          ├─► DLT ──► SQL Server ──► dbt ──�
 | [uv](https://docs.astral.sh/uv/getting-started/installation/) | latest | replaces pip/venv |
 | [Docker Desktop](https://www.docker.com/products/docker-desktop/) | latest | runs SQL Server |
 | [Power BI Desktop](https://powerbi.microsoft.com/desktop/) | May 2026+ | PBIR format required |
-| [ODBC Driver 18](https://learn.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server) | 18 | for SQL Server connection |
+| [ODBC Driver 18](https://learn.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server) | 18 | SQL Server connection |
 
 ---
 
 ## Setup (PowerShell)
 
-### 1. Clone and enter the repo
+### 1. Clone
 
 ```powershell
 git clone https://github.com/your-username/data-pipeline.git
@@ -48,7 +47,7 @@ cd data-pipeline
 Copy-Item .env.example .env
 ```
 
-Open `.env` and set your values (defaults work with the included `docker-compose.yml`):
+Edit `.env` — defaults match the included `docker-compose.yml`:
 
 ```env
 MSSQL_HOST=localhost
@@ -64,55 +63,42 @@ MSSQL_DB=analytics
 docker compose up -d
 ```
 
-Wait ~15 seconds for the container to become healthy:
+Wait ~15 seconds, then verify:
 
 ```powershell
-docker compose ps   # STATUS should show "healthy"
+docker compose ps   # STATUS should be "healthy"
 ```
 
-### 4. Install Python dependencies
+### 4. Install dependencies
 
 ```powershell
 uv sync
 ```
 
-This creates a `.venv/` and installs all dependencies from `pyproject.toml`.
-
-### 5. Run the data pipeline
+### 5. Run the pipeline
 
 ```powershell
-uv run python main.py
+# Load raw data
+uv run python -m extract.run
+
+# Transform to marts
+$env:$(Get-Content .env | ForEach-Object { $_ }) 2>$null
+uv run dbt run --project-dir transform --profiles-dir .
 ```
 
-This runs two DLT pipelines:
-- `jsonplaceholder` → loads into `raw` schema
-- `dummyjson` → loads into `dummyjson` schema
-
-### 6. Run dbt transformations
+Or use Make (if available):
 
 ```powershell
-uv run --env-file .env dbt run --profiles-dir . --project-dir dbt
+make pipeline   # runs load + transform in sequence
 ```
 
-This builds all models in the `marts` schema:
+### 6. Open the report
 
-| Model | Description |
-|-------|-------------|
-| `dim_users` | User dimension from JSONPlaceholder |
-| `fct_posts` | Posts with comment counts |
-| `fct_user_engagement` | Per-user todo + post engagement |
-| `fct_products` | DummyJSON products (brand-filtered) |
-| `fct_user_activity` | Cross-source: spend + posts + todos per user |
-| `fct_recipes` | Recipes with derived total_calories |
+Open `reports/todo-report.pbip` in Power BI Desktop.
 
-### 7. Open the report
+On first open, Desktop prompts for SQL Server credentials — use the values from `.env`, server `localhost`.
 
-Open `report/todo-report.pbip` in Power BI Desktop.
-
-On first open, Desktop will prompt for SQL Server credentials — use the same values as in `.env` with server `localhost`.
-
-To refresh data after re-running the pipeline:
-
+After re-running the pipeline, refresh data in Desktop:
 ```
 Home → Refresh
 ```
@@ -123,27 +109,31 @@ Home → Refresh
 
 ```
 data-pipeline/
-├── pipeline/                  # DLT source definitions
-│   ├── jsonplaceholder.py     # JSONPlaceholder API (users/posts/comments/todos)
-│   └── dummyjson.py           # DummyJSON API (products/users/carts/posts/todos/recipes)
-├── dbt/                       # dbt project
+├── extract/                        # DLT ingestion layer
+│   ├── __init__.py
+│   ├── run.py                      # Pipeline entrypoint
+│   ├── jsonplaceholder.py          # JSONPlaceholder source
+│   └── dummyjson.py                # DummyJSON source (products/users/recipes…)
+│
+├── transform/                      # dbt transformation layer
 │   ├── dbt_project.yml
 │   ├── models/
-│   │   ├── staging/           # Raw → cleaned views
-│   │   └── marts/             # Business-ready tables
-│   ├── macros/
-│   └── profiles.yml           # (in repo root, not here)
-├── report/                    # Power BI PBIR report (version-controlled JSON)
-│   ├── todo-report.pbip       # Open this in Power BI Desktop
-│   ├── todo-report.Report/    # Report layer (pages, visuals, theme)
+│   │   ├── staging/                # Raw → cleaned views
+│   │   └── marts/                  # Business-ready tables (fct_*, dim_*)
+│   └── macros/
+│
+├── reports/                        # Power BI report (version-controlled PBIR)
+│   ├── todo-report.pbip            # ← open this in Power BI Desktop
+│   ├── todo-report.Report/         # Report layer (pages, visuals, theme)
 │   ├── todo-report.SemanticModel/  # Semantic model (TMDL tables, measures)
-│   └── Tema.json              # Custom Bloom theme source file
-├── main.py                    # Pipeline entrypoint
-├── docker-compose.yml         # SQL Server + pgAdmin
-├── profiles.yml               # dbt connection profile
-├── pyproject.toml             # Python dependencies
-├── .env.example               # Environment variable template
-└── CLAUDE.md                  # AI assistant instructions and lessons learned
+│   └── Tema.json                   # Custom Bloom theme source
+│
+├── docker-compose.yml              # SQL Server container
+├── profiles.yml                    # dbt connection profile
+├── pyproject.toml                  # Python dependencies
+├── Makefile                        # Common commands
+├── .env.example                    # Environment variable template
+└── CLAUDE.md                       # AI assistant instructions
 ```
 
 ---
@@ -151,30 +141,31 @@ data-pipeline/
 ## Common commands
 
 ```powershell
-# Run everything in sequence
-docker compose up -d
-uv run python main.py
-uv run --env-file .env dbt run --profiles-dir . --project-dir dbt
+make setup      # First-time: copy .env, uv sync, start DB, create database
+make up         # Start SQL Server
+make load       # Run DLT pipeline (extract/)
+make transform  # Run dbt models (transform/)
+make pipeline   # load + transform in sequence
+make down       # Stop SQL Server
+```
 
-# Validate the Power BI report structure
-uv run --env-file .env pbi report --path report/todo-report.Report validate
+Manual equivalents:
 
-# Run only specific dbt models
-uv run --env-file .env dbt run --profiles-dir . --project-dir dbt --select fct_products
-
-# Check what's in the database
-uv run --env-file .env dbt show --profiles-dir . --project-dir dbt --select fct_user_activity
+```powershell
+uv run python -m extract.run
+uv run dbt run --project-dir transform --profiles-dir .
+uv run dbt run --project-dir transform --profiles-dir . --select fct_products
+pbi report --path reports/todo-report.Report validate
 ```
 
 ---
 
-## Known issues / quirks
+## Known issues
 
-See `CLAUDE.md` for a full list of Power BI + pbi-cli lessons learned during development.
+See `CLAUDE.md` for full details. Short version:
 
-Short version:
-- Never use `pbi report set-background` — it writes broken JSON
-- `pbi report set-theme` has a path bug — fix `report.json` after each use
-- Rounded corners and background colors must be set in `visualContainerObjects` in each `visual.json`, not just in the theme
-- Scatter chart bindings (`--x`/`--y`) are not supported in pbi-cli — write them directly in `visual.json`
-- Measure names must be unique across all tables in the model — prefix with table context
+- **`pbi report set-background`** writes broken JSON — write `page.json` directly instead
+- **`pbi report set-theme`** writes wrong resource path — fix `report.json` after each use
+- **Rounded corners / background colors** must be set in `visualContainerObjects` in each `visual.json`, not just in the theme JSON
+- **Scatter chart bindings** (`--x`/`--y`) not supported in pbi-cli — write directly in `visual.json`
+- **Measure names** must be globally unique across all tables in the model — prefix with table context (e.g. `Avg Product Rating`, not `Avg Rating`)

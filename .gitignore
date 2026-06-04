@@ -10,17 +10,17 @@ wheels/
 # Environment secrets
 .env
 
-# dbt compiled output (not needed in source control)
-dbt/target/
-dbt/logs/
+# dbt compiled output
+transform/target/
+transform/logs/
 logs/
 
 # Power BI Desktop local state (machine-specific)
-report/**/.pbi/localSettings.json
-report/**/.pbi/cache.abf
-report/**/.pbi/editorSettings.json
+reports/**/.pbi/localSettings.json
+reports/**/.pbi/cache.abf
+reports/**/.pbi/editorSettings.json
 
-# dlt pipeline state (machine-specific)
+# dlt pipeline state
 .dlt/
 
 # OS

@@ -16,9 +16,9 @@ down:
 	docker compose down
 
 load:
-	uv run main.py
+	uv run python -m extract.run
 
 transform:
-	set -a && . ./.env && set +a && uv run dbt run --project-dir dbt --profiles-dir .
+	set -a && . ./.env && set +a && uv run dbt run --project-dir transform --profiles-dir .
 
 pipeline: load transform

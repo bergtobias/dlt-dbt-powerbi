@@ -1,8 +1,8 @@
 import os
 import dlt
 from dotenv import load_dotenv
-from pipeline.jsonplaceholder import source as jsonplaceholder_source
-from pipeline.dummyjson import source as dummyjson_source
+from extract.jsonplaceholder import source as jsonplaceholder_source
+from extract.dummyjson import source as dummyjson_source
 
 load_dotenv()
 
