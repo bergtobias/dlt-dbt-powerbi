@@ -3,7 +3,7 @@
   "name": "gauge_rate",
   "position": {
     "x": 620,
-    "y": 470.0,
+    "y": 470,
     "z": 7,
     "height": 200,
     "width": 640,
@@ -13,6 +13,9 @@
     "visualType": "gauge",
     "query": {
       "queryState": {
+        "MaxValue": {
+          "projections": []
+        },
         "Y": {
           "projections": [
             {
@@ -30,13 +33,9 @@
               "nativeQueryRef": "Avg Completion Rate"
             }
           ]
-        },
-        "MaxValue": {
-          "projections": []
         }
       }
     },
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "border": [
         {
@@ -45,13 +44,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#C4B5FD'"
                 }
               }
             },
@@ -75,13 +67,6 @@
                 }
               }
             },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#FAFAFA'"
-                }
-              }
-            },
             "transparency": {
               "expr": {
                 "Literal": {
@@ -92,6 +77,7 @@
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

@@ -6,13 +6,14 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation PBI_QueryOrder = ["fct_user_engagement","fct_products"]
+annotation PBI_QueryOrder = ["fct_user_engagement","fct_products","fct_posts","fct_user_activity"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
 ref table fct_user_engagement
-
 ref table fct_products
+ref table fct_posts
+ref table fct_user_activity
 

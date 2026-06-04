@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "p_scatter_pris",
   "position": {
     "x": 20,
@@ -13,18 +13,59 @@
     "visualType": "scatterChart",
     "query": {
       "queryState": {
-        "Details": {
-          "projections": []
-        },
         "X": {
-          "projections": []
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_products"
+                    }
+                  },
+                  "Property": "price"
+                }
+              },
+              "queryRef": "fct_products.price"
+            }
+          ]
         },
         "Y": {
-          "projections": []
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_products"
+                    }
+                  },
+                  "Property": "rating"
+                }
+              },
+              "queryRef": "fct_products.rating"
+            }
+          ]
+        },
+        "Details": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_products"
+                    }
+                  },
+                  "Property": "title"
+                }
+              },
+              "queryRef": "fct_products.title"
+            }
+          ]
         }
       }
     },
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "border": [
         {
@@ -79,7 +120,21 @@
             }
           }
         }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Pris vs Betyg per Produkt'"
+                }
+              }
+            }
+          }
+        }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

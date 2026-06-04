@@ -32,7 +32,7 @@ def main():
     dj = dlt.pipeline(
         pipeline_name="dummyjson",
         destination=dlt.destinations.mssql(credentials=creds),
-        dataset_name="raw",
+        dataset_name="dummyjson",
     )
     print(dj.run(dummyjson_source()))
 

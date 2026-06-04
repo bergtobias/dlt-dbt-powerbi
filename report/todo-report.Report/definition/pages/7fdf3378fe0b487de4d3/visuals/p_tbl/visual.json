@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "p_tbl",
   "position": {
-    "x": 20,
-    "y": 680,
+    "x": 20.0,
+    "y": 680.0,
     "z": 8,
-    "height": 200,
-    "width": 1240,
+    "height": 200.0,
+    "width": 1240.0,
     "tabOrder": 8
   },
   "visual": {
@@ -17,105 +17,7 @@
           "projections": [
             {
               "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fct_products"
-                    }
-                  },
-                  "Property": "title"
-                }
-              },
-              "queryRef": "fct_products.title",
-              "nativeQueryRef": "title"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fct_products"
-                    }
-                  },
-                  "Property": "category"
-                }
-              },
-              "queryRef": "fct_products.category",
-              "nativeQueryRef": "category"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fct_products"
-                    }
-                  },
-                  "Property": "brand"
-                }
-              },
-              "queryRef": "fct_products.brand",
-              "nativeQueryRef": "brand"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fct_products"
-                    }
-                  },
-                  "Property": "price"
-                }
-              },
-              "queryRef": "fct_products.price",
-              "nativeQueryRef": "price"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fct_products"
-                    }
-                  },
-                  "Property": "discounted_price"
-                }
-              },
-              "queryRef": "fct_products.discounted_price",
-              "nativeQueryRef": "discounted_price"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fct_products"
-                    }
-                  },
-                  "Property": "rating"
-                }
-              },
-              "queryRef": "fct_products.rating",
-              "nativeQueryRef": "rating"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fct_products"
-                    }
-                  },
-                  "Property": "stock"
-                }
-              },
-              "queryRef": "fct_products.stock",
-              "nativeQueryRef": "stock"
-            },
-            {
-              "field": {
-                "Measure": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
                       "Entity": "fct_products"
@@ -124,14 +26,131 @@
                   "Property": "availability_status"
                 }
               },
-              "queryRef": "fct_products.availability_status",
-              "nativeQueryRef": "availability_status"
+              "queryRef": "fct_products.availability_status1",
+              "nativeQueryRef": "availability_status1"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_products"
+                    }
+                  },
+                  "Property": "brand"
+                }
+              },
+              "queryRef": "fct_products.brand1",
+              "nativeQueryRef": "brand1"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_products"
+                    }
+                  },
+                  "Property": "category"
+                }
+              },
+              "queryRef": "fct_products.category1",
+              "nativeQueryRef": "category1"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_products"
+                        }
+                      },
+                      "Property": "discounted_price"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_products.discounted_price)",
+              "nativeQueryRef": "Summa discounted_price"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_products"
+                        }
+                      },
+                      "Property": "price"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_products.price)",
+              "nativeQueryRef": "Summa price"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_products"
+                        }
+                      },
+                      "Property": "rating"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Avg(fct_products.rating)",
+              "nativeQueryRef": "Medelvärde på rating"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_products"
+                        }
+                      },
+                      "Property": "stock"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_products.stock)",
+              "nativeQueryRef": "Summa stock"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_products"
+                    }
+                  },
+                  "Property": "title"
+                }
+              },
+              "queryRef": "fct_products.title1",
+              "nativeQueryRef": "title1"
             }
           ]
         }
       }
     },
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "border": [
         {
@@ -187,6 +206,143 @@
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "d1027a9ab70d7aeec99d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_products"
+              }
+            },
+            "Property": "availability_status"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "9feb5f0848625a30ac2d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_products"
+              }
+            },
+            "Property": "brand"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "c76975225c598032c5ab",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_products"
+              }
+            },
+            "Property": "category"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "e7cb7206b683b61c4c5d",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_products"
+                  }
+                },
+                "Property": "discounted_price"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6b5cf3544d1306347170",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_products"
+                  }
+                },
+                "Property": "price"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "b634be8297c00032b010",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_products"
+                  }
+                },
+                "Property": "rating"
+              }
+            },
+            "Function": 1
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a282b23a5440dcb980e2",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_products"
+                  }
+                },
+                "Property": "stock"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "da1ffec3483dd94868dd",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_products"
+              }
+            },
+            "Property": "title"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

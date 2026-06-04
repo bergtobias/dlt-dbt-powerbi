@@ -8,7 +8,7 @@ USE [analytics];
     USE [analytics];
     EXEC('
         create view "staging"."stg_products__dbt_tmp" as with source as (
-    select * from "analytics"."raw"."products"
+    select * from "analytics"."dummyjson"."products"
 ),
 
 renamed as (
@@ -31,6 +31,7 @@ renamed as (
     from source
 )
 
-select * from renamed;
+select * from renamed
+where brand is not null and trim(brand) != '''';
     ')
 

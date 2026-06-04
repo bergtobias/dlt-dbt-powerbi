@@ -1,5 +1,5 @@
 with source as (
-    select * from {{ source('raw', 'products') }}
+    select * from {{ source('dummyjson', 'products') }}
 ),
 
 renamed as (
@@ -23,3 +23,4 @@ renamed as (
 )
 
 select * from renamed
+where brand is not null and trim(brand) != ''

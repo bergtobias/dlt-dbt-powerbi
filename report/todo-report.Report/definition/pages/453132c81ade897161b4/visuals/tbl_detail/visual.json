@@ -3,7 +3,7 @@
   "name": "tbl_detail",
   "position": {
     "x": 20,
-    "y": 690.0,
+    "y": 690,
     "z": 8,
     "height": 220,
     "width": 1240,
@@ -129,13 +129,6 @@
                 }
               }
             },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#C4B5FD'"
-                }
-              }
-            },
             "radius": {
               "expr": {
                 "Literal": {
@@ -153,13 +146,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#FAFAFA'"
                 }
               }
             },

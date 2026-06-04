@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "p_bar_category",
   "position": {
     "x": 20,
@@ -32,6 +32,9 @@
             }
           ]
         },
+        "Legend": {
+          "projections": []
+        },
         "Y": {
           "projections": [
             {
@@ -49,13 +52,9 @@
               "nativeQueryRef": "Total Products"
             }
           ]
-        },
-        "Legend": {
-          "projections": []
         }
       }
     },
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "border": [
         {
@@ -111,6 +110,7 @@
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

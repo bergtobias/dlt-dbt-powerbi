@@ -5,7 +5,7 @@
     "x": 20,
     "y": 20,
     "z": 0,
-    "height": 110.0,
+    "height": 110,
     "width": 295,
     "tabOrder": 0
   },
@@ -33,7 +33,6 @@
         }
       }
     },
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "border": [
         {
@@ -42,13 +41,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#C4B5FD'"
                 }
               }
             },
@@ -72,13 +64,6 @@
                 }
               }
             },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#EDE9FE'"
-                }
-              }
-            },
             "transparency": {
               "expr": {
                 "Literal": {
@@ -89,6 +74,7 @@
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

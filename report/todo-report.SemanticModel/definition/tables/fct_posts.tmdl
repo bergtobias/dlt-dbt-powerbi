@@ -1,10 +1,20 @@
 table fct_posts
 	lineageTag: e0d9e2b1-d426-4122-8fd3-a099fe72f46c
 
+	measure 'Total Posts' = COUNTROWS(fct_posts)
+		lineageTag: baab9585-ec86-46a9-9652-cc77bec7c785
+
+	measure 'Avg Comments per Post' = AVERAGE(fct_posts[comment_count])
+		formatString: 0.0
+		lineageTag: 6359871f-f019-4d16-8901-e7342ea88996
+
+	measure 'Posts with Comments' = CALCULATE(COUNTROWS(fct_posts), fct_posts[is_commented] = 1)
+		lineageTag: c1d2e3f4-a5b6-7890-cdef-123456789012
+
 	column post_id
 		dataType: int64
 		lineageTag: 383a5c4b-5092-4798-8b06-eb1726bec099
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: post_id
 
 		annotation SummarizationSetBy = Automatic
@@ -12,7 +22,7 @@ table fct_posts
 	column user_id
 		dataType: int64
 		lineageTag: a63a0db3-0c48-4cf0-babc-86a031e8e6fa
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: user_id
 
 		annotation SummarizationSetBy = Automatic
@@ -49,15 +59,29 @@ table fct_posts
 
 		annotation SummarizationSetBy = Automatic
 
-	measure 'Total Posts' = COUNTROWS(fct_posts)
-		lineageTag: baab9585-ec86-46a9-9652-cc77bec7c785
+	column body
+		dataType: string
+		lineageTag: 79278960-8507-4b1a-8f40-d766c18e4fe5
+		summarizeBy: none
+		sourceColumn: body
 
-	measure 'Avg Comments per Post' = AVERAGE(fct_posts[comment_count])
-		lineageTag: 6359871f-f019-4d16-8901-e7342ea88996
-		formatString: 0.0
+		annotation SummarizationSetBy = Automatic
 
-	measure 'Posts with Comments' = CALCULATE(COUNTROWS(fct_posts), fct_posts[is_commented] = 1)
-		lineageTag: c1d2e3f4-a5b6-7890-cdef-123456789012
+	column author_username
+		dataType: string
+		lineageTag: bae6582d-e6cf-4814-95db-879dde8fa0fc
+		summarizeBy: none
+		sourceColumn: author_username
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_name
+		dataType: string
+		lineageTag: 62cc94f9-b175-45b8-9b11-138380df455c
+		summarizeBy: none
+		sourceColumn: company_name
+
+		annotation SummarizationSetBy = Automatic
 
 	partition fct_posts = m
 		mode: import
@@ -69,3 +93,4 @@ table fct_posts
 				  tbl
 
 	annotation PBI_ResultType = Table
+

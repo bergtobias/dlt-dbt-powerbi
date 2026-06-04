@@ -3,7 +3,7 @@
   "name": "chart_company_rate",
   "position": {
     "x": 620,
-    "y": 150.0,
+    "y": 150,
     "z": 5,
     "height": 300,
     "width": 640,
@@ -52,7 +52,6 @@
         }
       }
     },
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "border": [
         {
@@ -61,13 +60,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#C4B5FD'"
                 }
               }
             },
@@ -91,13 +83,6 @@
                 }
               }
             },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#FAFAFA'"
-                }
-              }
-            },
             "transparency": {
               "expr": {
                 "Literal": {
@@ -108,6 +93,7 @@
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

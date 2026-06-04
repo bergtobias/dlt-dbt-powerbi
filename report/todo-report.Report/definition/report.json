@@ -31,17 +31,6 @@
           "type": "BaseTheme"
         }
       ]
-    },
-    {
-      "name": "RegisteredResources",
-      "type": "RegisteredResources",
-      "items": [
-        {
-          "name": "Tema.json",
-          "type": "CustomTheme",
-          "path": "Tema.json"
-        }
-      ]
     }
   ],
   "settings": {

@@ -1,0 +1,4 @@
+relationship AutoDetected_6890147a-a560-4329-b27b-8834d2573046
+	fromColumn: fct_posts.company_name
+	toColumn: fct_user_engagement.company_name
+

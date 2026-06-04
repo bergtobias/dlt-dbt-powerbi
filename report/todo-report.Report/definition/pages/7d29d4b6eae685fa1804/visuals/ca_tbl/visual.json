@@ -1,0 +1,206 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "ca_tbl",
+  "position": {
+    "x": 20,
+    "y": 680,
+    "z": 8,
+    "height": 200,
+    "width": 1240,
+    "tabOrder": 8
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_user_activity"
+                    }
+                  },
+                  "Property": "full_name"
+                }
+              },
+              "queryRef": "fct_user_activity.full_name",
+              "nativeQueryRef": "full_name"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_user_activity"
+                    }
+                  },
+                  "Property": "department"
+                }
+              },
+              "queryRef": "fct_user_activity.department",
+              "nativeQueryRef": "department"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_user_activity"
+                    }
+                  },
+                  "Property": "gender"
+                }
+              },
+              "queryRef": "fct_user_activity.gender",
+              "nativeQueryRef": "gender"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_user_activity"
+                    }
+                  },
+                  "Property": "total_spend"
+                }
+              },
+              "queryRef": "fct_user_activity.total_spend",
+              "nativeQueryRef": "total_spend"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_user_activity"
+                    }
+                  },
+                  "Property": "post_count"
+                }
+              },
+              "queryRef": "fct_user_activity.post_count",
+              "nativeQueryRef": "post_count"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_user_activity"
+                    }
+                  },
+                  "Property": "total_likes"
+                }
+              },
+              "queryRef": "fct_user_activity.total_likes",
+              "nativeQueryRef": "total_likes"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_user_activity"
+                    }
+                  },
+                  "Property": "completed_todos"
+                }
+              },
+              "queryRef": "fct_user_activity.completed_todos",
+              "nativeQueryRef": "completed_todos"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_user_activity"
+                    }
+                  },
+                  "Property": "completion_rate_pct"
+                }
+              },
+              "queryRef": "fct_user_activity.completion_rate_pct",
+              "nativeQueryRef": "completion_rate_pct"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_user_activity"
+                    }
+                  },
+                  "Property": "items_bought"
+                }
+              },
+              "queryRef": "fct_user_activity.items_bought",
+              "nativeQueryRef": "items_bought"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "expr": {
+                "Literal": {
+                  "Value": "'#C4B5FD'"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "expr": {
+                "Literal": {
+                  "Value": "'#FAFAFA'"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

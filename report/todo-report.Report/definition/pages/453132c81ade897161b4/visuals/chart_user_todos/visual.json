@@ -3,7 +3,7 @@
   "name": "chart_user_todos",
   "position": {
     "x": 20,
-    "y": 150.0,
+    "y": 150,
     "z": 4,
     "height": 300,
     "width": 580,
@@ -113,13 +113,6 @@
                 }
               }
             },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#C4B5FD'"
-                }
-              }
-            },
             "radius": {
               "expr": {
                 "Literal": {
@@ -137,13 +130,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#FAFAFA'"
                 }
               }
             },

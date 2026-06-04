@@ -1,6 +1,20 @@
 table fct_products
 	lineageTag: a1b2c3d4-e5f6-7890-abcd-111222333444
 
+	measure 'Total Products' = COUNTROWS(fct_products)
+		lineageTag: f2a3b4c5-d6e7-8901-fabc-cccdddeeefff
+
+	measure 'Avg Price' = AVERAGE(fct_products[price])
+		formatString: \#,0.00
+		lineageTag: a3b4c5d6-e7f8-9012-abcd-dddeeefff000
+
+	measure 'Avg Rating' = AVERAGE(fct_products[rating])
+		formatString: 0.00
+		lineageTag: b4c5d6e7-f8a9-0123-bcde-eeeffffaaabb
+
+	measure 'Total Stock' = SUM(fct_products[stock])
+		lineageTag: c5d6e7f8-a9b0-1234-cdef-ffffaaabbbcc
+
 	column product_id
 		dataType: int64
 		lineageTag: b2c3d4e5-f6a7-8901-bcde-222333444555
@@ -35,37 +49,37 @@ table fct_products
 
 	column price
 		dataType: double
+		formatString: \#,0.00
 		lineageTag: f6a7b8c9-d0e1-2345-fabc-666777888999
 		summarizeBy: sum
 		sourceColumn: price
-		formatString: \#,0.00
 
 		annotation SummarizationSetBy = Automatic
 
 	column discounted_price
 		dataType: double
+		formatString: \#,0.00
 		lineageTag: a7b8c9d0-e1f2-3456-abcd-777888999aaa
 		summarizeBy: sum
 		sourceColumn: discounted_price
-		formatString: \#,0.00
 
 		annotation SummarizationSetBy = Automatic
 
 	column discount_percentage
 		dataType: double
+		formatString: 0.0
 		lineageTag: b8c9d0e1-f2a3-4567-bcde-888999aaabbb
 		summarizeBy: average
 		sourceColumn: discount_percentage
-		formatString: 0.0
 
 		annotation SummarizationSetBy = Automatic
 
 	column rating
 		dataType: double
+		formatString: 0.00
 		lineageTag: c9d0e1f2-a3b4-5678-cdef-999aaabbbccc
 		summarizeBy: average
 		sourceColumn: rating
-		formatString: 0.00
 
 		annotation SummarizationSetBy = Automatic
 
@@ -85,19 +99,46 @@ table fct_products
 
 		annotation SummarizationSetBy = Automatic
 
-	measure 'Total Products' = COUNTROWS(fct_products)
-		lineageTag: f2a3b4c5-d6e7-8901-fabc-cccdddeeefff
+	column sku
+		dataType: string
+		lineageTag: da391ba4-a65d-40b6-a36f-1c07a02fccc2
+		summarizeBy: none
+		sourceColumn: sku
 
-	measure 'Avg Price' = AVERAGE(fct_products[price])
-		lineageTag: a3b4c5d6-e7f8-9012-abcd-dddeeefff000
-		formatString: \#,0.00
+		annotation SummarizationSetBy = Automatic
 
-	measure 'Avg Rating' = AVERAGE(fct_products[rating])
-		lineageTag: b4c5d6e7-f8a9-0123-bcde-eeeffffaaabb
-		formatString: 0.00
+	column minimum_order_quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 6d675410-ecce-497e-a710-4e65938376dc
+		summarizeBy: sum
+		sourceColumn: minimum_order_quantity
 
-	measure 'Total Stock' = SUM(fct_products[stock])
-		lineageTag: c5d6e7f8-a9b0-1234-cdef-ffffaaabbbcc
+		annotation SummarizationSetBy = Automatic
+
+	column return_policy
+		dataType: string
+		lineageTag: 5af7b46b-7a70-41fe-afd6-ac4368b3a103
+		summarizeBy: none
+		sourceColumn: return_policy
+
+		annotation SummarizationSetBy = Automatic
+
+	column shipping_information
+		dataType: string
+		lineageTag: 74f7cc81-a993-4eda-935c-7f7ea63b72b9
+		summarizeBy: none
+		sourceColumn: shipping_information
+
+		annotation SummarizationSetBy = Automatic
+
+	column warranty_information
+		dataType: string
+		lineageTag: 60fd3500-5cb5-4d79-b1ab-c5c3fbfd2fce
+		summarizeBy: none
+		sourceColumn: warranty_information
+
+		annotation SummarizationSetBy = Automatic
 
 	partition fct_products = m
 		mode: import
@@ -109,3 +150,4 @@ table fct_products
 				  tbl
 
 	annotation PBI_ResultType = Table
+

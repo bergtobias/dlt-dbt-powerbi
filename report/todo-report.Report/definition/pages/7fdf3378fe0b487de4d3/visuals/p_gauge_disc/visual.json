@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "p_gauge_disc",
   "position": {
     "x": 620,
@@ -13,30 +13,57 @@
     "visualType": "gauge",
     "query": {
       "queryState": {
+        "MaxValue": {
+          "projections": []
+        },
         "Y": {
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "fct_products"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_products"
+                        }
+                      },
+                      "Property": "discount_percentage"
                     }
                   },
-                  "Property": "discount_percentage"
+                  "Function": 1
                 }
               },
-              "queryRef": "fct_products.discount_percentage",
-              "nativeQueryRef": "discount_percentage"
+              "queryRef": "Avg(fct_products.discount_percentage)",
+              "nativeQueryRef": "Medelv\u00e4rde p\u00e5 discount_percentage"
             }
           ]
-        },
-        "MaxValue": {
-          "projections": []
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fct_products"
+                      }
+                    },
+                    "Property": "discount_percentage"
+                  }
+                },
+                "Function": 1
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "border": [
         {
@@ -92,6 +119,30 @@
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "7596da3566374c8cd361",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_products"
+                  }
+                },
+                "Property": "discount_percentage"
+              }
+            },
+            "Function": 1
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

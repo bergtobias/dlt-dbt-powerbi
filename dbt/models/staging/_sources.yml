@@ -9,3 +9,13 @@ sources:
       - name: comments
       - name: todos
       - name: products
+
+  - name: dummyjson
+    schema: dummyjson
+    tables:
+      - name: products
+      - name: users
+      - name: carts
+      - name: cart_items
+      - name: posts
+      - name: dj_todos

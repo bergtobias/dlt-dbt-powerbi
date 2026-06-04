@@ -1,5 +1,5 @@
 with source as (
-    select * from "analytics"."raw"."products"
+    select * from "analytics"."dummyjson"."products"
 ),
 
 renamed as (
@@ -23,3 +23,4 @@ renamed as (
 )
 
 select * from renamed
+where brand is not null and trim(brand) != ''

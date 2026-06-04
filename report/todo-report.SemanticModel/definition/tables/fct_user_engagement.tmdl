@@ -49,7 +49,7 @@ table fct_user_engagement
 	column todo_count
 		dataType: int64
 		lineageTag: 94ebf345-c9f1-4330-98de-96da03c38018
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: todo_count
 
 		annotation SummarizationSetBy = Automatic
@@ -57,7 +57,7 @@ table fct_user_engagement
 	column completed_todos
 		dataType: int64
 		lineageTag: 1472cb7a-0ed0-4849-a3c1-7fff550b858d
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: completed_todos
 
 		annotation SummarizationSetBy = Automatic
@@ -66,7 +66,7 @@ table fct_user_engagement
 		dataType: double
 		formatString: 0.0%
 		lineageTag: 544cea56-f9a1-471b-9a01-0d61f1f8aaa0
-		summarizeBy: average
+		summarizeBy: none
 		sourceColumn: completion_rate
 
 		annotation SummarizationSetBy = Automatic
@@ -83,7 +83,7 @@ table fct_user_engagement
 		dataType: int64
 		formatString: 0
 		lineageTag: c3530ceb-f00d-4de8-b9b1-a34e2c8a201e
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: post_count
 
 		annotation SummarizationSetBy = Automatic
@@ -92,7 +92,7 @@ table fct_user_engagement
 		dataType: int64
 		formatString: 0
 		lineageTag: 631ef010-4ce6-488e-a115-0a2d6e3970ea
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: total_comments_received
 
 		annotation SummarizationSetBy = Automatic
@@ -100,7 +100,7 @@ table fct_user_engagement
 	column avg_comments_per_post
 		dataType: double
 		lineageTag: 8985ae5a-48c3-4495-b5fa-90579f053bb5
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: avg_comments_per_post
 
 		annotation SummarizationSetBy = Automatic

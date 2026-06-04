@@ -1,0 +1,158 @@
+table fct_user_activity
+	lineageTag: 1a2b3c4d-5e6f-7890-abcd-aabbccddeeff
+
+	column user_id
+		dataType: int64
+		lineageTag: 2b3c4d5e-6f7a-8901-bcde-bbccddeeff00
+		summarizeBy: none
+		sourceColumn: user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column full_name
+		dataType: string
+		lineageTag: 3c4d5e6f-7a8b-9012-cdef-ccddeeffe011
+		summarizeBy: none
+		sourceColumn: full_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column age
+		dataType: int64
+		lineageTag: 4d5e6f7a-8b9c-0123-defa-ddeeff001122
+		summarizeBy: average
+		sourceColumn: age
+
+		annotation SummarizationSetBy = Automatic
+
+	column gender
+		dataType: string
+		lineageTag: 5e6f7a8b-9c0d-1234-efab-eeff00112233
+		summarizeBy: none
+		sourceColumn: gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 6f7a8b9c-0d1e-2345-fabc-ff0011223344
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: 7a8b9c0d-1e2f-3456-abcd-001122334455
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column company
+		dataType: string
+		lineageTag: 8b9c0d1e-2f3a-4567-bcde-112233445566
+		summarizeBy: none
+		sourceColumn: company
+
+		annotation SummarizationSetBy = Automatic
+
+	column department
+		dataType: string
+		lineageTag: 9c0d1e2f-3a4b-5678-cdef-223344556677
+		summarizeBy: none
+		sourceColumn: department
+
+		annotation SummarizationSetBy = Automatic
+
+	column post_count
+		dataType: int64
+		lineageTag: 0d1e2f3a-4b5c-6789-defa-334455667788
+		summarizeBy: sum
+		sourceColumn: post_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_views
+		dataType: int64
+		lineageTag: 1e2f3a4b-5c6d-7890-efab-445566778899
+		summarizeBy: sum
+		sourceColumn: total_views
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_likes
+		dataType: int64
+		lineageTag: 2f3a4b5c-6d7e-8901-fabc-5566778899aa
+		summarizeBy: sum
+		sourceColumn: total_likes
+
+		annotation SummarizationSetBy = Automatic
+
+	column todo_count
+		dataType: int64
+		lineageTag: 3a4b5c6d-7e8f-9012-abcd-6677889900bb
+		summarizeBy: sum
+		sourceColumn: todo_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column completed_todos
+		dataType: int64
+		lineageTag: 4b5c6d7e-8f9a-0123-bcde-778899aabbcc
+		summarizeBy: sum
+		sourceColumn: completed_todos
+
+		annotation SummarizationSetBy = Automatic
+
+	column completion_rate_pct
+		dataType: double
+		lineageTag: 5c6d7e8f-9a0b-1234-cdef-8899aabbccdd
+		summarizeBy: average
+		sourceColumn: completion_rate_pct
+		formatString: 0.0
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_spend
+		dataType: double
+		lineageTag: 6d7e8f9a-0b1c-2345-defa-99aabbccddee
+		summarizeBy: sum
+		sourceColumn: total_spend
+		formatString: \#,0.00
+
+		annotation SummarizationSetBy = Automatic
+
+	column items_bought
+		dataType: int64
+		lineageTag: 7e8f9a0b-1c2d-3456-efab-aabbccddeeff
+		summarizeBy: sum
+		sourceColumn: items_bought
+
+		annotation SummarizationSetBy = Automatic
+
+	measure 'Total Users' = COUNTROWS(fct_user_activity)
+		lineageTag: 8f9a0b1c-2d3e-4567-fabc-bbccddeeffe0
+
+	measure 'Avg Spend per User' = AVERAGE(fct_user_activity[total_spend])
+		lineageTag: 9a0b1c2d-3e4f-5678-abcd-ccddeeff0011
+		formatString: \#,0.00
+
+	measure 'Avg Completion Rate' = AVERAGE(fct_user_activity[completion_rate_pct])
+		lineageTag: 0b1c2d3e-4f5a-6789-bcde-ddeeff001122
+		formatString: 0.0
+
+	measure 'Avg Posts per User' = AVERAGE(fct_user_activity[post_count])
+		lineageTag: 1c2d3e4f-5a6b-7890-cdef-eeff00112233
+		formatString: 0.0
+
+	partition fct_user_activity = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database("wsl.localhost", "analytics"),
+				  tbl    = Source{[Schema="marts",Item="fct_user_activity"]}[Data]
+				in
+				  tbl
+
+	annotation PBI_ResultType = Table
