@@ -19,3 +19,4 @@ sources:
       - name: cart_items
       - name: posts
       - name: dj_todos
+      - name: recipes

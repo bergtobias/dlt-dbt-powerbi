@@ -16,4 +16,5 @@ ref table fct_user_engagement
 ref table fct_products
 ref table fct_posts
 ref table fct_user_activity
+ref table fct_recipes
 

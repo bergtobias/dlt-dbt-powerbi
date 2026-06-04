@@ -3238,3 +3238,285 @@ Runtime Error
 [0m23:52:22.016148 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5137b89910>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f51367f3950>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5136cd2480>]}
 [0m23:52:22.016503 [debug] [MainThread]: Flushing usage events
 [0m23:52:22.453520 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m00:02:09.984707 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0252c9f4a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0254cec800>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0252aa66c0>]}
+
+
+============================== 00:02:09.987963 | 15eacb04-8f15-4946-812b-56fa65fffdc2 ==============================
+[0m00:02:09.987963 [info ] [MainThread]: Running with dbt=1.11.11
+[0m00:02:09.988470 [debug] [MainThread]: running dbt with arguments {'quiet': 'False', 'invocation_command': 'dbt run --profiles-dir . --project-dir dbt --select fct_recipes', 'printer_width': '80', 'no_print': 'None', 'debug': 'False', 'static_parser': 'True', 'introspect': 'True', 'target_path': 'None', 'warn_error': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'profiles_dir': '.', 'cache_selected_only': 'False', 'fail_fast': 'False', 'send_anonymous_usage_stats': 'True', 'version_check': 'True', 'write_json': 'True', 'log_path': 'dbt/logs', 'use_experimental_parser': 'False', 'log_format': 'default', 'partial_parse': 'True', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'use_colors': 'True', 'empty': 'False'}
+[0m00:02:10.203197 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '15eacb04-8f15-4946-812b-56fa65fffdc2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f025247fef0>]}
+[0m00:02:10.286147 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '15eacb04-8f15-4946-812b-56fa65fffdc2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f025292e1e0>]}
+[0m00:02:10.286883 [info ] [MainThread]: Registered adapter: sqlserver=1.9.2
+[0m00:02:10.361853 [debug] [MainThread]: checksum: 30a8cc8fdcbf66701b0944d4ccce3fa46dd04b61e5df68b9f16d57b2e0e3f0be, vars: {}, profile: , target: , version: 1.11.11
+[0m00:02:10.460417 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 1 files added, 1 files changed.
+[0m00:02:10.461033 [debug] [MainThread]: Partial parsing: added file: data_pipeline://models/marts/fct_recipes.sql
+[0m00:02:10.461663 [debug] [MainThread]: Partial parsing: updated file: data_pipeline://models/staging/_sources.yml
+[0m00:02:11.000526 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '15eacb04-8f15-4946-812b-56fa65fffdc2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f02510d0bc0>]}
+[0m00:02:11.077144 [debug] [MainThread]: Wrote artifact WritableManifest to dbt/target/manifest.json
+[0m00:02:11.079022 [debug] [MainThread]: Wrote artifact SemanticManifest to dbt/target/semantic_manifest.json
+[0m00:02:11.086465 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '15eacb04-8f15-4946-812b-56fa65fffdc2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0251cae9c0>]}
+[0m00:02:11.086978 [info ] [MainThread]: Found 13 models, 12 sources, 518 macros
+[0m00:02:11.087327 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '15eacb04-8f15-4946-812b-56fa65fffdc2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f02500e9fa0>]}
+[0m00:02:11.088738 [info ] [MainThread]: 
+[0m00:02:11.089132 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m00:02:11.089446 [info ] [MainThread]: 
+[0m00:02:11.089956 [debug] [MainThread]: Acquiring new sqlserver connection 'master'
+[0m00:02:11.090854 [debug] [ThreadPool]: Acquiring new sqlserver connection 'list_analytics'
+[0m00:02:11.103943 [debug] [ThreadPool]: dbt-sqlserver
+[0m00:02:11.104524 [debug] [ThreadPool]: Using sqlserver connection "list_analytics"
+[0m00:02:11.104840 [debug] [ThreadPool]: On list_analytics: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "data_pipeline", "target_name": "dev", "connection_name": "list_analytics"} */
+USE [analytics];
+    select  name as [schema]
+    from sys.schemas with (nolock) 
+    OPTION (LABEL = 'dbt-sqlserver');
+
+  
+[0m00:02:11.105132 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m00:02:11.105526 [debug] [ThreadPool]: sqlserver adapter: Using connection string: DRIVER={ODBC Driver 18 for SQL Server};SERVER=localhost,1433;Database=analytics;Pooling=true;SQL_ATTR_TRACE=SQL_OPT_TRACE_OFF;UID={sa};PWD=***;encrypt=Yes;TrustServerCertificate=Yes;APP=dbt-sqlserver/1.9.2;ConnectRetryCount=3;ConnectRetryInterval=10
+[0m00:02:11.118784 [debug] [ThreadPool]: sqlserver adapter: Connected to db: analytics
+[0m00:02:11.119914 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m00:02:11.121334 [debug] [ThreadPool]: On list_analytics: Close
+[0m00:02:11.128133 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_analytics, now list_analytics_intermediate)
+[0m00:02:11.129266 [debug] [ThreadPool]: Acquiring new sqlserver connection 'list_analytics_marts'
+[0m00:02:11.135528 [debug] [ThreadPool]: dbt-sqlserver
+[0m00:02:11.136209 [debug] [ThreadPool]: Acquiring new sqlserver connection 'list_analytics_staging'
+[0m00:02:11.138360 [debug] [ThreadPool]: dbt-sqlserver
+[0m00:02:11.138972 [debug] [ThreadPool]: Using sqlserver connection "list_analytics_intermediate"
+[0m00:02:11.140612 [debug] [ThreadPool]: dbt-sqlserver
+[0m00:02:11.141093 [debug] [ThreadPool]: Using sqlserver connection "list_analytics_marts"
+[0m00:02:11.141488 [debug] [ThreadPool]: On list_analytics_intermediate: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "data_pipeline", "target_name": "dev", "connection_name": "list_analytics_intermediate"} */
+USE [analytics];
+    with base as (
+      select
+        DB_NAME() as [database],
+        t.name as [name],
+        SCHEMA_NAME(t.schema_id) as [schema],
+        'table' as table_type
+      from sys.tables as t with (nolock)
+      union all
+      select
+        DB_NAME() as [database],
+        v.name as [name],
+        SCHEMA_NAME(v.schema_id) as [schema],
+        'view' as table_type
+      from sys.views as v with (nolock)
+    )
+    select * from base
+    where [schema] like 'intermediate'
+    
+    OPTION (LABEL = 'dbt-sqlserver');
+
+  
+[0m00:02:11.142110 [debug] [ThreadPool]: Using sqlserver connection "list_analytics_staging"
+[0m00:02:11.142475 [debug] [ThreadPool]: On list_analytics_marts: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "data_pipeline", "target_name": "dev", "connection_name": "list_analytics_marts"} */
+USE [analytics];
+    with base as (
+      select
+        DB_NAME() as [database],
+        t.name as [name],
+        SCHEMA_NAME(t.schema_id) as [schema],
+        'table' as table_type
+      from sys.tables as t with (nolock)
+      union all
+      select
+        DB_NAME() as [database],
+        v.name as [name],
+        SCHEMA_NAME(v.schema_id) as [schema],
+        'view' as table_type
+      from sys.views as v with (nolock)
+    )
+    select * from base
+    where [schema] like 'marts'
+    
+    OPTION (LABEL = 'dbt-sqlserver');
+
+  
+[0m00:02:11.142901 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m00:02:11.143348 [debug] [ThreadPool]: On list_analytics_staging: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "data_pipeline", "target_name": "dev", "connection_name": "list_analytics_staging"} */
+USE [analytics];
+    with base as (
+      select
+        DB_NAME() as [database],
+        t.name as [name],
+        SCHEMA_NAME(t.schema_id) as [schema],
+        'table' as table_type
+      from sys.tables as t with (nolock)
+      union all
+      select
+        DB_NAME() as [database],
+        v.name as [name],
+        SCHEMA_NAME(v.schema_id) as [schema],
+        'view' as table_type
+      from sys.views as v with (nolock)
+    )
+    select * from base
+    where [schema] like 'staging'
+    
+    OPTION (LABEL = 'dbt-sqlserver');
+
+  
+[0m00:02:11.143719 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m00:02:11.144265 [debug] [ThreadPool]: sqlserver adapter: Using connection string: DRIVER={ODBC Driver 18 for SQL Server};SERVER=localhost,1433;Database=analytics;Pooling=true;SQL_ATTR_TRACE=SQL_OPT_TRACE_OFF;UID={sa};PWD=***;encrypt=Yes;TrustServerCertificate=Yes;APP=dbt-sqlserver/1.9.2;ConnectRetryCount=3;ConnectRetryInterval=10
+[0m00:02:11.144750 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m00:02:11.145221 [debug] [ThreadPool]: sqlserver adapter: Using connection string: DRIVER={ODBC Driver 18 for SQL Server};SERVER=localhost,1433;Database=analytics;Pooling=true;SQL_ATTR_TRACE=SQL_OPT_TRACE_OFF;UID={sa};PWD=***;encrypt=Yes;TrustServerCertificate=Yes;APP=dbt-sqlserver/1.9.2;ConnectRetryCount=3;ConnectRetryInterval=10
+[0m00:02:11.145778 [debug] [ThreadPool]: sqlserver adapter: Connected to db: analytics
+[0m00:02:11.146248 [debug] [ThreadPool]: sqlserver adapter: Using connection string: DRIVER={ODBC Driver 18 for SQL Server};SERVER=localhost,1433;Database=analytics;Pooling=true;SQL_ATTR_TRACE=SQL_OPT_TRACE_OFF;UID={sa};PWD=***;encrypt=Yes;TrustServerCertificate=Yes;APP=dbt-sqlserver/1.9.2;ConnectRetryCount=3;ConnectRetryInterval=10
+[0m00:02:11.150312 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m00:02:11.152445 [debug] [ThreadPool]: On list_analytics_intermediate: ROLLBACK
+[0m00:02:11.153282 [debug] [ThreadPool]: On list_analytics_intermediate: Close
+[0m00:02:11.154862 [debug] [ThreadPool]: sqlserver adapter: Connected to db: analytics
+[0m00:02:11.155212 [debug] [ThreadPool]: sqlserver adapter: Connected to db: analytics
+[0m00:02:11.159118 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m00:02:11.159816 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m00:02:11.161725 [debug] [ThreadPool]: On list_analytics_staging: ROLLBACK
+[0m00:02:11.163110 [debug] [ThreadPool]: On list_analytics_staging: Close
+[0m00:02:11.163623 [debug] [ThreadPool]: On list_analytics_marts: ROLLBACK
+[0m00:02:11.165035 [debug] [ThreadPool]: On list_analytics_marts: Close
+[0m00:02:11.166542 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '15eacb04-8f15-4946-812b-56fa65fffdc2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f025189a330>]}
+[0m00:02:11.167035 [debug] [MainThread]: On master: COMMIT
+[0m00:02:11.169339 [debug] [Thread-1 (]: Began running node model.data_pipeline.fct_recipes
+[0m00:02:11.169902 [info ] [Thread-1 (]: 1 of 1 START sql table model marts.fct_recipes ................................. [RUN]
+[0m00:02:11.170358 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_analytics_marts, now model.data_pipeline.fct_recipes)
+[0m00:02:11.170716 [debug] [Thread-1 (]: Began compiling node model.data_pipeline.fct_recipes
+[0m00:02:11.177702 [debug] [Thread-1 (]: Writing injected SQL for node "model.data_pipeline.fct_recipes"
+[0m00:02:11.178413 [debug] [Thread-1 (]: Began executing node model.data_pipeline.fct_recipes
+[0m00:02:11.215287 [debug] [Thread-1 (]: dbt-sqlserver
+[0m00:02:11.221067 [debug] [Thread-1 (]: Applying DROP to: "analytics"."marts"."fct_recipes__dbt_tmp__dbt_tmp_vw"
+[0m00:02:11.226588 [debug] [Thread-1 (]: dbt-sqlserver
+[0m00:02:11.227275 [debug] [Thread-1 (]: Using sqlserver connection "model.data_pipeline.fct_recipes"
+[0m00:02:11.227830 [debug] [Thread-1 (]: On model.data_pipeline.fct_recipes: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "data_pipeline", "target_name": "dev", "node_id": "model.data_pipeline.fct_recipes"} */
+
+        USE [analytics];
+        select
+            sch.name as schema_name,
+            obj.name as view_name
+        from sys.sql_expression_dependencies refs
+        inner join sys.objects obj
+        on refs.referencing_id = obj.object_id
+        inner join sys.schemas sch
+        on obj.schema_id = sch.schema_id
+        where refs.referenced_database_name = 'analytics'
+        and refs.referenced_schema_name = 'marts'
+        and refs.referenced_entity_name = 'fct_recipes__dbt_tmp__dbt_tmp_vw'
+        and obj.type = 'V'
+        
+    OPTION (LABEL = 'dbt-sqlserver');
+
+      
+[0m00:02:11.228378 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m00:02:11.228770 [debug] [Thread-1 (]: sqlserver adapter: Using connection string: DRIVER={ODBC Driver 18 for SQL Server};SERVER=localhost,1433;Database=analytics;Pooling=true;SQL_ATTR_TRACE=SQL_OPT_TRACE_OFF;UID={sa};PWD=***;encrypt=Yes;TrustServerCertificate=Yes;APP=dbt-sqlserver/1.9.2;ConnectRetryCount=3;ConnectRetryInterval=10
+[0m00:02:11.229177 [debug] [Thread-1 (]: sqlserver adapter: Connected to db: analytics
+[0m00:02:11.241204 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m00:02:11.243242 [debug] [Thread-1 (]: Using sqlserver connection "model.data_pipeline.fct_recipes"
+[0m00:02:11.243915 [debug] [Thread-1 (]: On model.data_pipeline.fct_recipes: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "data_pipeline", "target_name": "dev", "node_id": "model.data_pipeline.fct_recipes"} */
+
+      
+      
+    
+    USE [analytics];
+    EXEC('DROP view IF EXISTS "marts"."fct_recipes__dbt_tmp__dbt_tmp_vw";');
+
+[0m00:02:11.246723 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m00:02:11.262597 [debug] [Thread-1 (]: Writing runtime sql for node "model.data_pipeline.fct_recipes"
+[0m00:02:11.263462 [debug] [Thread-1 (]: Using sqlserver connection "model.data_pipeline.fct_recipes"
+[0m00:02:11.264089 [debug] [Thread-1 (]: On model.data_pipeline.fct_recipes: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "data_pipeline", "target_name": "dev", "node_id": "model.data_pipeline.fct_recipes"} */
+
+  
+    USE [analytics];
+    USE [analytics];
+    
+    
+
+    
+
+    
+    USE [analytics];
+    EXEC('
+        create view "marts"."fct_recipes__dbt_tmp__dbt_tmp_vw" as with source as (
+    select * from "analytics"."dummyjson"."recipes"
+)
+
+select
+    id                                          as recipe_id,
+    name,
+    cuisine,
+    difficulty,
+    meal_type,
+    prep_time_minutes,
+    cook_time_minutes,
+    total_time_minutes,
+    servings,
+    calories_per_serving,
+    rating,
+    review_count,
+    calories_per_serving * servings             as total_calories
+from source;
+    ')
+
+EXEC('
+            SELECT * INTO "analytics"."marts"."fct_recipes__dbt_tmp" FROM "analytics"."marts"."fct_recipes__dbt_tmp__dbt_tmp_vw" 
+    OPTION (LABEL = ''dbt-sqlserver'');
+
+        ')
+
+    
+    EXEC('DROP VIEW IF EXISTS marts.fct_recipes__dbt_tmp__dbt_tmp_vw')
+
+
+
+    
+    use [analytics];
+    if EXISTS (
+        SELECT *
+        FROM sys.indexes with (nolock)
+        WHERE name = 'marts_fct_recipes__dbt_tmp_cci'
+        AND object_id=object_id('marts_fct_recipes__dbt_tmp')
+    )
+    DROP index "marts"."fct_recipes__dbt_tmp".marts_fct_recipes__dbt_tmp_cci
+    CREATE CLUSTERED COLUMNSTORE INDEX marts_fct_recipes__dbt_tmp_cci
+    ON "marts"."fct_recipes__dbt_tmp"
+
+   
+
+
+  
+[0m00:02:11.324589 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m00:02:11.330107 [debug] [Thread-1 (]: Using sqlserver connection "model.data_pipeline.fct_recipes"
+[0m00:02:11.330547 [debug] [Thread-1 (]: On model.data_pipeline.fct_recipes: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "data_pipeline", "target_name": "dev", "node_id": "model.data_pipeline.fct_recipes"} */
+USE [analytics];
+      EXEC sp_rename 'marts.fct_recipes__dbt_tmp', 'fct_recipes'
+[0m00:02:11.340663 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m00:02:11.357504 [debug] [Thread-1 (]: On model.data_pipeline.fct_recipes: COMMIT
+[0m00:02:11.359679 [debug] [Thread-1 (]: Applying DROP to: "analytics"."marts"."fct_recipes__dbt_backup"
+[0m00:02:11.360306 [debug] [Thread-1 (]: Using sqlserver connection "model.data_pipeline.fct_recipes"
+[0m00:02:11.360673 [debug] [Thread-1 (]: On model.data_pipeline.fct_recipes: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "data_pipeline", "target_name": "dev", "node_id": "model.data_pipeline.fct_recipes"} */
+
+      
+    USE [analytics];
+    EXEC('DROP table IF EXISTS "marts"."fct_recipes__dbt_backup";');
+
+[0m00:02:11.362167 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m00:02:11.364394 [debug] [Thread-1 (]: On model.data_pipeline.fct_recipes: Close
+[0m00:02:11.365801 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '15eacb04-8f15-4946-812b-56fa65fffdc2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0254a06510>]}
+[0m00:02:11.366656 [info ] [Thread-1 (]: 1 of 1 OK created sql table model marts.fct_recipes ............................ [[32mOK[0m in 0.19s]
+[0m00:02:11.367380 [debug] [Thread-1 (]: Finished running node model.data_pipeline.fct_recipes
+[0m00:02:11.369225 [debug] [MainThread]: On master: COMMIT
+[0m00:02:11.369732 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m00:02:11.370028 [debug] [MainThread]: Connection 'list_analytics_intermediate' was properly closed.
+[0m00:02:11.370324 [debug] [MainThread]: Connection 'model.data_pipeline.fct_recipes' was properly closed.
+[0m00:02:11.370682 [debug] [MainThread]: Connection 'list_analytics_staging' was properly closed.
+[0m00:02:11.371116 [info ] [MainThread]: 
+[0m00:02:11.371585 [info ] [MainThread]: Finished running 1 table model in 0 hours 0 minutes and 0.28 seconds (0.28s).
+[0m00:02:11.372230 [debug] [MainThread]: Command end result
+[0m00:02:11.401472 [debug] [MainThread]: Wrote artifact WritableManifest to dbt/target/manifest.json
+[0m00:02:11.403444 [debug] [MainThread]: Wrote artifact SemanticManifest to dbt/target/semantic_manifest.json
+[0m00:02:11.408474 [debug] [MainThread]: Wrote artifact RunExecutionResult to dbt/target/run_results.json
+[0m00:02:11.408930 [info ] [MainThread]: 
+[0m00:02:11.409334 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m00:02:11.409710 [info ] [MainThread]: 
+[0m00:02:11.410055 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m00:02:11.410919 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 1.497704, "process_in_blocks": "0", "process_kernel_time": 0.338662, "process_mem_max_rss": "133492", "process_out_blocks": "3784", "process_user_time": 2.539966}
+[0m00:02:11.411431 [debug] [MainThread]: Command `dbt run` succeeded at 00:02:11.411344 after 1.50 seconds
+[0m00:02:11.411793 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f02524f7530>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f025129af30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0254769880>]}
+[0m00:02:11.412169 [debug] [MainThread]: Flushing usage events
+[0m00:02:12.044287 [debug] [MainThread]: An error was encountered while trying to flush usage events

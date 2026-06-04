@@ -22,7 +22,7 @@ def _paginate(endpoint, key, limit=100, strip_keys=None):
 
 @dlt.source(name="dummyjson")
 def source():
-    return products(), users(), carts(), cart_items(), posts(), dj_todos()
+    return products(), users(), carts(), cart_items(), posts(), dj_todos(), recipes()
 
 
 @dlt.resource(write_disposition="replace", primary_key="id")
@@ -90,6 +90,25 @@ def posts():
             "views":      p.get("views"),
             "likes":      p.get("reactions", {}).get("likes"),
             "dislikes":   p.get("reactions", {}).get("dislikes"),
+        }
+
+
+@dlt.resource(write_disposition="replace", primary_key="id")
+def recipes():
+    for r in _paginate("recipes", "recipes", strip_keys=["ingredients", "instructions", "tags", "image"]):
+        yield {
+            "id":                  r["id"],
+            "name":                r["name"],
+            "cuisine":             r.get("cuisine"),
+            "difficulty":          r.get("difficulty"),
+            "meal_type":           r.get("mealType", [None])[0],
+            "prep_time_minutes":   r.get("prepTimeMinutes"),
+            "cook_time_minutes":   r.get("cookTimeMinutes"),
+            "total_time_minutes":  (r.get("prepTimeMinutes") or 0) + (r.get("cookTimeMinutes") or 0),
+            "servings":            r.get("servings"),
+            "calories_per_serving":r.get("caloriesPerServing"),
+            "rating":              r.get("rating"),
+            "review_count":        r.get("reviewCount"),
         }
 
 
