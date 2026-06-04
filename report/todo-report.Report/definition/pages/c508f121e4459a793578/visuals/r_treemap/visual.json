@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "r_treemap",
   "position": {
     "x": 20,
@@ -14,6 +14,9 @@
     "query": {
       "queryState": {
         "Category": {
+          "projections": []
+        },
+        "Group": {
           "projections": [
             {
               "field": {
@@ -52,7 +55,6 @@
         }
       }
     },
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "border": [
         {
@@ -61,13 +63,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#C4B5FD'"
                 }
               }
             },
@@ -91,13 +86,6 @@
                 }
               }
             },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#F3E8FF'"
-                }
-              }
-            },
             "transparency": {
               "expr": {
                 "Literal": {
@@ -108,6 +96,39 @@
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "baa9936b35190146786a",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_recipes"
+              }
+            },
+            "Property": "Total Recipes"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f9f10dfaa6e254e5dac4",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_recipes"
+              }
+            },
+            "Property": "cuisine"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

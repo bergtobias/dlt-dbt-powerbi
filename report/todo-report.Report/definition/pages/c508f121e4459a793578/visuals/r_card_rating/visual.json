@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "r_card_rating",
   "position": {
     "x": 20,
@@ -32,7 +32,6 @@
         }
       }
     },
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "border": [
         {
@@ -41,13 +40,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#C4B5FD'"
                 }
               }
             },
@@ -71,13 +63,6 @@
                 }
               }
             },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#EDE9FE'"
-                }
-              }
-            },
             "transparency": {
               "expr": {
                 "Literal": {
@@ -88,6 +73,7 @@
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

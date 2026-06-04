@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "r_bar_meal",
   "position": {
     "x": 260,
@@ -32,6 +32,9 @@
             }
           ]
         },
+        "Legend": {
+          "projections": []
+        },
         "Y": {
           "projections": [
             {
@@ -49,13 +52,9 @@
               "nativeQueryRef": "Total Recipes"
             }
           ]
-        },
-        "Legend": {
-          "projections": []
         }
       }
     },
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "border": [
         {
@@ -64,13 +63,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#C4B5FD'"
                 }
               }
             },
@@ -94,13 +86,6 @@
                 }
               }
             },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#F3E8FF'"
-                }
-              }
-            },
             "transparency": {
               "expr": {
                 "Literal": {
@@ -111,6 +96,7 @@
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

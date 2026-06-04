@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "r_scatter",
   "position": {
     "x": 260,
@@ -13,6 +13,43 @@
     "visualType": "scatterChart",
     "query": {
       "queryState": {
+        "Details": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_recipes"
+                    }
+                  },
+                  "Property": "name"
+                }
+              },
+              "queryRef": "fct_recipes.name"
+            }
+          ]
+        },
+        "Play": {
+          "projections": []
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_recipes"
+                    }
+                  },
+                  "Property": "review_count"
+                }
+              },
+              "queryRef": "fct_recipes.review_count"
+            }
+          ]
+        },
         "X": {
           "projections": [
             {
@@ -26,7 +63,8 @@
                   "Property": "total_time_minutes"
                 }
               },
-              "queryRef": "fct_recipes.total_time_minutes"
+              "queryRef": "fct_recipes.total_time_minutes",
+              "active": true
             }
           ]
         },
@@ -46,47 +84,9 @@
               "queryRef": "fct_recipes.calories_per_serving"
             }
           ]
-        },
-        "Details": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fct_recipes"
-                    }
-                  },
-                  "Property": "name"
-                }
-              },
-              "queryRef": "fct_recipes.name"
-            }
-          ]
-        },
-        "Size": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fct_recipes"
-                    }
-                  },
-                  "Property": "review_count"
-                }
-              },
-              "queryRef": "fct_recipes.review_count"
-            }
-          ]
-        },
-        "Play": {
-          "projections": []
         }
       }
     },
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "border": [
         {
@@ -95,13 +95,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#C4B5FD'"
                 }
               }
             },
@@ -125,13 +118,6 @@
                 }
               }
             },
-            "color": {
-              "expr": {
-                "Literal": {
-                  "Value": "'#FFFFFF'"
-                }
-              }
-            },
             "transparency": {
               "expr": {
                 "Literal": {
@@ -142,6 +128,7 @@
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

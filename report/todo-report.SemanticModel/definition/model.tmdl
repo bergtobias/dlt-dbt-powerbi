@@ -6,7 +6,7 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation PBI_QueryOrder = ["fct_user_engagement","fct_products","fct_posts","fct_user_activity"]
+annotation PBI_QueryOrder = ["fct_user_engagement","fct_products","fct_posts","fct_user_activity","fct_recipes"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
