@@ -22,6 +22,7 @@ reports/**/.pbi/editorSettings.json
 
 # dlt pipeline state
 .dlt/
+.user.yml
 
 # OS
 .DS_Store
